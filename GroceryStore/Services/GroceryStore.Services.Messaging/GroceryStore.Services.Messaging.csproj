@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Reference Include="SendGrid">
-      <HintPath>..\..\..\..\.nuget\packages\sendgrid\9.10.0\lib\netstandard2.0\SendGrid.dll</HintPath>
+      <HintPath>..\..\..\..\..\.nuget\packages\sendgrid\9.10.0\lib\netstandard2.0\SendGrid.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -50,7 +50,7 @@
             returnUrl = returnUrl ?? this.Url.Content("~/");
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email };             
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
@@ -60,7 +60,7 @@
                     var callbackUrl = this.Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { userId = user.Id, code = code },
+                        values: new { userId = user.Id, code },
                         protocol: this.Request.Scheme);
 
                     await this.emailSender.SendEmailAsync(
