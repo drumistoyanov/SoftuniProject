@@ -1,211 +1,110 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Aviato E-Commerce Template">
-
-    <meta name="author" content="Themefisher.com">
-    <title>Експрес2Д Еоод</title>
-    <!-- Mobile Specific Meta-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eElectronics - HTML eCommerce Template</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
-    <!-- Themefisher Icon font -->
-    <link rel="stylesheet" href="/plugins/themefisher-font/style.css">
-    <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/plugins/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="/plugins/slick-carousel/slick/slick-theme.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body id="body">
-    <!-- Start Top Header Bar -->
-    <section class="top-header">
+<body>
+
+    <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-xs-12 col-sm-4">
-                    <div class="contact-number">
-                        <i class="tf-ion-ios-telephone"></i>
-                        <span>+359888888888</span>                      
-                    </div>                  
-                    <partial name="_LoginPartial">
-                </div>
-                <div class="col-md-4 col-xs-12 col-sm-4">
-                    <!-- Site Logo -->
-                    <div class="logo text-center">
-                        <a asp-controller="Home" asp-action="Index">
-                            <!-- replace logo here -->
-                            <svg width="135px" height="39px" viewBox="0 0 155 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40" font-family="AustinBold, Austin" font-weight="bold">
-                                    <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
-                                        <text id="Ekspress">
-                                            <tspan x="108.94" y="325">Експрес</tspan>
-                                        </text>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-4 col-xs-12 col-sm-4">
-                    <!-- Cart -->
-                    <ul class="top-menu text-right list-inline">                        
-                        <li class="dropdown cart-nav dropdown-slide">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-cart"></i>Cart</a>
-                            <div class="dropdown-menu cart-dropdown">
-                                <!-- Cart Item -->
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="/images/shop/cart/cart-1.jpg" alt="image" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="">Assorted Fruity Filled</a></h4>
-                                        <div class="cart-price">
-                                            <span>1 x</span>
-                                            <span>5.00</span>
-                                        </div>
-                                        <h5><strong>$5</strong></h5>
-                                    </div>
-                                    <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-                                </div><!-- / Cart Item -->
-                                <!-- Cart Item -->
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="/images/shop/cart/cart-2.jpg" alt="image" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="">Fruitmix</a></h4>
-                                        <div class="cart-price">
-                                            <span>2 x</span>
-                                            <span>0.50</span>
-                                        </div>
-                                        <h5><strong>$1</strong></h5>
-                                    </div>
-                                    <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-                                </div><!-- / Cart Item -->
 
-                                <div class="cart-summary">
-                                    <span>Total</span>
-                                    <span class="total-price">$6.00</span>
-                                </div>
-                                <ul class="text-center cart-buttons">
-                                    <li><a href="" class="btn btn-small">View Cart</a></li>
-                                    <li><a href="" class="btn btn-small btn-solid-border">Checkout</a></li>
+                <div class="col-md-4">
+                    <div class="header-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">USD</a></li>
+                                    <li><a href="#">INR</a></li>
+                                    <li><a href="#">GBP</a></li>
                                 </ul>
-                            </div>
-                        </li><!-- / Cart -->
-                        <!-- Search -->
-                        <li class="dropdown search dropdown-slide">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-ios-search-strong"></i> Search</a>
-                            <ul class="dropdown-menu search-dropdown">
-                                <li>
-                                    <form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
-                                </li>
-                            </ul>
-                        </li><!-- / Search -->
-                        <!-- Languages -->
-                        <li class="commonSelect">
-                            <select class="form-control">
-                                <option>EN</option>
-                                <option>DE</option>
-                                <option>FR</option>
-                                <option>ES</option>
-                            </select>
-                        </li><!-- / Languages -->
-                    </ul><!-- / .nav .navbar-nav .navbar-right -->
+                            </li>
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </section><!-- End Top Header Bar -->
-    <!-- Main Menu Section -->
-    <section class="menu">
-        <nav class="navbar navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <h2 class="menu-title">Main Menu</h2>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div><!-- / .navbar-header -->
-                <!-- Navbar Links -->
-                <div id="navbar" class="navbar-collapse collapse text-center">
-                    <ul class="nav navbar-nav">
-                        <!-- Home -->
-                        <li>
-                            <a asp-controller="Home" asp-action="Index">Home</a>
-                        </li><!-- / Home -->
-                        <!-- Elements -->
-                        <li>
-                            <a asp-controller="Home" asp-action="Index">Shop</a>
-                        </li><!-- / Elements -->
-                        <!-- Elements -->
-                        <li>
-                            <a asp-controller="Home" asp-action="Index">Contact</a>
-                        </li><!-- / Elements -->
-                    </ul><!-- / .nav .navbar-nav -->
-                </div><!--/.navbar-collapse -->
-            </div><!-- / .container -->
-        </nav>
-    </section>
-
-
-
-
-
-
-
-
+    </div> <!-- End header area -->
     @RenderBody()
-
-    <footer class="footer section text-center">
+    <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="footer-menu">
-                        <li>
-                            <a href="">CONTACT</a>
-                        </li>
-                        <li>
-                            <a href="">SHIPPING</a>
-                        </li>
-                        <li>
-                            <a href="">TERMS OF SERVICE</a>
-                        </li>
-                        <li>
-                            <a href="">PRIVACY POLICY</a>
-                        </li>
-                    </ul>
-                    <p class="copyright-text">Powered by Bootstrap</p>
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; 2015 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div> <!-- End footer bottom area -->
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
 
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <!--
-    Essential Scripts
-    =====================================-->
-    <!-- Main jQuery -->
-    <script src="https://code.jquery.com/jquery-git.min.js"></script>
-    <!-- Bootstrap 3.1 -->
-    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Slick Carousel -->
-    <script src="/plugins/slick-carousel/slick/slick.min.js"></script>
-    <!-- Main Js File -->
-    <script src="/js/script.js"></script>
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
 
-    @RenderSection("Scripts", required: false)
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
 </body>
 </html>

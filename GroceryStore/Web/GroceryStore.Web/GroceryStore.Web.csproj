@@ -28,15 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\js\site.js" />
-    <None Include="wwwroot\js\site.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Data\GroceryStore.Data.Models\GroceryStore.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\GroceryStore.Data\GroceryStore.Data.csproj" />
     <ProjectReference Include="..\..\Services\GroceryStore.Services.Messaging\GroceryStore.Services.Messaging.csproj" />

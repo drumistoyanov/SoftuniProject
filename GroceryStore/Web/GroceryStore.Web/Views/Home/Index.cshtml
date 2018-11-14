@@ -1,365 +1,252 @@
 ﻿@{
     this.ViewData["Title"] = "Home Page";
 }
-<div class="home-slider">
-    <div>
-        <div class="slider-item dark-bg" style="background-image:url('images/slider/slider-1.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="slide-inner text-left">
-                            <h1>Minimal  Summer Collection</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut illum ratione? <br> Aliquam facilis dolorem dolor illum saepe commodi ratione.</p>
-                            <a href="" class="btn btn-main">Buy Now</a>
-                        </div>
+
+
+<div>
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="index.html">e<span>Electronics</span></a></h1>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="slider-item white-bg" style="background-image:url('images/slider/slider-2.jpg')">
-            <div class="container">
-                <div class="slide-inner text-center">
-                    <h1>Weeding Business & Casual</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut illum ratione? <br> Aliquam facilis dolorem dolor illum saepe commodi ratione.</p>
-                    <a href="" class="btn btn-main">Buy Now</a>
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a href="cart.html">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        <div class="slider-item dark-bg" style="background-image:url('images/slider/slider-3.jpg'); background-position:50%;background-repeat:no-repeat;">
-            <div class="container">
-                <div class="slide-inner text-left">
-                    <h1>Stylish & Scalable</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut illum ratione? <br> Aliquam facilis dolorem dolor illum saepe commodi ratione.</p>
-                    <a href="" class="btn btn-main">Buy Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </div> <!-- End site branding area -->
 
-<section class="product-category section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title text-center">
-                    <h2>Product Category</h2>
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="category-box">
-                    <a href="">
-                        <img src="images/shop/category/category-1.jpg" alt="" />
-                        <div class="content">
-                            <h3>Clothes Sales</h3>
-                            <p>Shop New Season Clothing</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="category-box">
-                    <a href="">
-                        <img src="images/shop/category/category-2.jpg" alt="" />
-                        <div class="content">
-                            <h3>Smart Casuals</h3>
-                            <p>Get Wide Range Selection</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="category-box category-box-2">
-                    <a href="">
-                        <img src="images/shop/category/category-3.jpg" alt="" />
-                        <div class="content">
-                            <h3>Jewellery</h3>
-                            <p>Special Design Comes First</p>
-                        </div>
-                    </a>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop page</a></li>
+                        <li><a href="single-product.html">Single product</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Others</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="products section bg-gray">
-    <div class="container">
-        <div class="row">
-            <div class="title text-center">
-                <h2>Trendy Products</h2>
+    </div> <!-- End mainmenu area -->
+
+    <div class="slider-area">
+        <div class="zigzag-bottom"></div>
+        <div id="slide-list" class="carousel carousel-fade slide" data-ride="carousel">
+
+            <div class="slide-bulletz">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ol class="carousel-indicators slide-indicators">
+                                <li data-target="#slide-list" data-slide-to="0" class="active"></li>
+                                <li data-target="#slide-list" data-slide-to="1"></li>
+                                <li data-target="#slide-list" data-slide-to="2"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-one"></div>
+                        <div class="slide-text-wrapper">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-two"></div>
+                        <div class="slide-text-wrapper">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-three"></div>
+                        <div class="slide-text-wrapper">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
+    </div> <!-- End slider area -->
 
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <span class="bage">Sale</span>
-                        <img class="img-responsive" src="images/shop/products/product-1.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+    <div class="promo-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-refresh"></i>
+                        <p>30 Days return</p>
                     </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Reef Boardsport</a></h4>
-                        <p class="price">$200</p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-truck"></i>
+                        <p>Free shipping</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-lock"></i>
+                        <p>Secure payments</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-gift"></i>
+                        <p>New products</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-2.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-3.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Strayhorn SP</a></h4>
-                        <p class="price">$230</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-4.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Bradley Mid</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-5.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-6.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <span class="bage">Sale</span>
-                        <img class="img-responsive" src="images/shop/products/product-7.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-8.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-9.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div> <!-- End promo area -->
 
-            <!-- Modal -->
-            <div class="modal product-modal fade" id="product-modal">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="tf-ion-close"></i>
-                </button>
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <div class="modal-image">
-                                        <img class="img-responsive" src="images/shop/products/modal-product.jpg" alt="product-img" />
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-product">
+                        <h2 class="section-title">Latest Products</h2>
+                        <div class="product-carousel">
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-1.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="product-short-details">
-                                        <h2 class="product-title">GM Pendant, Basalt Grey</h2>
-                                        <p class="product-price">$200</p>
-                                        <p class="product-short-description">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-                                        </p>
-                                        <a href="cart.html" class="btn btn-main">Add To Cart</a>
-                                        <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
+
+                                <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <ins>$700.00</ins> <del>$800.00</del>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-2.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
+                                </div>
+
+                                <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>$899.00</ins> <del>$999.00</del>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-3.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>$400.00</ins> <del>$425.00</del>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-4.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>$200.00</ins> <del>$225.00</del>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-5.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>$1200.00</ins> <del>$1355.00</del>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="img/product-6.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>$400.00</ins>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!-- /.modal -->
+            </div>
         </div>
-    </div>
-</section>
+    </div> <!-- End main content area -->
+
+    <div class="brands-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="brand-wrapper">
+                        <h2 class="section-title">Brands</h2>
+                        <div class="brand-list">
+                            <img src="img/services_logo__1.jpg" alt="">
+                            <img src="img/services_logo__2.jpg" alt="">
+                            <img src="img/services_logo__3.jpg" alt="">
+                            <img src="img/services_logo__4.jpg" alt="">
+                            <img src="img/services_logo__1.jpg" alt="">
+                            <img src="img/services_logo__2.jpg" alt="">
+                            <img src="img/services_logo__3.jpg" alt="">
+                            <img src="img/services_logo__4.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End brands area -->
+</div>
