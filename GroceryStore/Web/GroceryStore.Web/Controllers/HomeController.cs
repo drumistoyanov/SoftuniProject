@@ -9,9 +9,9 @@
             return this.View();
         }
 
-        public IActionResult Product()
+        public IActionResult ShoppingCart()
         {
-            return this.View();
+            return this.View("");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
