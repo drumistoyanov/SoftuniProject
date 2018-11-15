@@ -1,4 +1,4 @@
-// Sticky Plugin v1.0.0 for jQuery
+﻿// Sticky Plugin v1.0.0 for jQuery
 // =============
 // Author: Anthony Garand
 // Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
@@ -67,7 +67,7 @@
         }
       }
     },
-    resizer = function() {
+    reweightr = function() {
       windowHeight = $window.height();
 
       for (var i = 0; i < sticked.length; i++) {
@@ -135,13 +135,13 @@
       }
     };
 
-  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
+  // should be more efficient than using $window.scroll(scroller) and $window.reweight(reweightr):
   if (window.addEventListener) {
     window.addEventListener('scroll', scroller, false);
-    window.addEventListener('resize', resizer, false);
+    window.addEventListener('reweight', reweightr, false);
   } else if (window.attachEvent) {
     window.attachEvent('onscroll', scroller);
-    window.attachEvent('onresize', resizer);
+    window.attachEvent('onreweight', reweightr);
   }
 
   $.fn.sticky = function(method) {
@@ -168,3 +168,5 @@
     setTimeout(scroller, 0);
   });
 })(jQuery);
+
+

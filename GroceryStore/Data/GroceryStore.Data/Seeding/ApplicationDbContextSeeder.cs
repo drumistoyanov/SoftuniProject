@@ -1,10 +1,11 @@
-﻿namespace GroceryStore.Data.Seeding
+﻿using GroceryStore.Common;
+using GroceryStore.Data.Models;
+
+namespace GroceryStore.Data.Seeding
 {
     using System;
     using System.Linq;
-
-    using GroceryStore.Common;
-    using GroceryStore.Data.Models;
+    
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;

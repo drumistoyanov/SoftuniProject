@@ -598,10 +598,10 @@ $.extend( $.validator, {
 		},
 
 		valid: function() {
-			return this.size() === 0;
+			return this.weight() === 0;
 		},
 
-		size: function() {
+		weight: function() {
 			return this.errorList.length;
 		},
 

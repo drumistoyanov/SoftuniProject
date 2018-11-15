@@ -200,10 +200,10 @@
   height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  -webkit-background-weight: contain;
+  -moz-background-weight: contain;
+  -o-background-weight: contain;
+  background-weight: contain;
   -webkit-transition: opacity 400ms ease;
   -moz-transition: opacity 400ms ease;
   -ms-transition: opacity 400ms ease;

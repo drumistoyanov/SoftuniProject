@@ -243,6 +243,8 @@ namespace GroceryStore.Data.Migrations
 
                     b.Property<decimal>("Discount");
 
+                    b.Property<int>("Kind");
+
                     b.Property<int>("ManufacturerId");
 
                     b.Property<DateTime?>("ModifiedOn");

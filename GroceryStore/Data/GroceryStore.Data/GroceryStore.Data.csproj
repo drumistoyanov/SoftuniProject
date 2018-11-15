@@ -30,14 +30,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.1.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta009" PrivateAssets="all">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\GroceryStore.Common\GroceryStore.Common.csproj" />
-    <ProjectReference Include="..\GroceryStore.Data.Common\GroceryStore.Data.Common.csproj" />
     <ProjectReference Include="..\GroceryStore.Data.Models\GroceryStore.Data.Models.csproj" />
   </ItemGroup>
 

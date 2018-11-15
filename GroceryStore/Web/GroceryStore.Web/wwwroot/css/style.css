@@ -47,7 +47,7 @@ body { font-family: 'Titillium Web', sans-serif; }
 }
 .user-menu li a {
     display: block;
-    font-size: 13px;
+    font-weight: 13px;
     margin-right: 5px;
     padding: 10px;
 }
@@ -83,7 +83,7 @@ z-index: 999;}
 
 
 .logo h1 {
-    font-size: 40px;
+    font-weight: 40px;
     margin: 40px 0;font-weight: 400;
 }
 .logo h1 a {
@@ -96,7 +96,7 @@ z-index: 999;}
 .shopping-item {
     border: 1px solid #ddd;
     float: right;
-    font-size: 18px;
+    font-weight: 18px;
     margin-top: 40px;
     padding: 10px;
     position: relative;
@@ -113,7 +113,7 @@ z-index: 999;}
     border-radius: 50%;
     color: #fff;
     display: inline-block;
-    font-size: 10px;
+    font-weight: 10px;
     height: 20px;
     padding-top: 2px;
     position: absolute;
@@ -144,7 +144,7 @@ z-index: 999;}
 
 .mainmenu-area ul.navbar-nav li a {
     color: #fff;
-    font-size: 16px;
+    font-weight: 16px;
     font-weight: 700;
     padding: 20px;
 }
@@ -180,7 +180,7 @@ z-index: 9;
   left: 0;
   position: absolute;
   top: 0;
-  width: 100%;background-position: center;background-size: cover
+  width: 100%;background-position: center;background-weight: cover
 }
 .slide-bg:after {
   background: none repeat scroll 0 0 #000;
@@ -195,9 +195,9 @@ z-index: 9;
 .slide-one {background-image: url(/img/slide-1.png)}
 .slide-two {background-image: url(/img/slide-2.png)}
 .slide-three {background-image: url(/img/slide-3.png)}
-.slide-text {color: #fff;font-size: 18px;font-weight: 200}
+.slide-text {color: #fff;font-weight: 18px;font-weight: 200}
 .slide-text h2 {
-  font-size: 45px;font-weight: 200
+  font-weight: 45px;font-weight: 200
 }
 
 .slide-content {position: relative;z-index: 9;padding: 30px}
@@ -219,7 +219,7 @@ z-index: 9;
     color: #fff;
     border: 1px solid #1abc9c;
     display: inline-block;
-    font-size: 20px;
+    font-weight: 20px;
     margin-top: 15px;
     padding: 10px 20px;
     text-transform: uppercase;
@@ -244,20 +244,20 @@ z-index: 9;
 .promo-area .zigzag-bottom, .brands-area .zigzag-bottom{background: #fff}
 .single-promo {
     border: 1px solid #17a78b;
-    font-size: 25px;
+    font-weight: 25px;
     font-weight: 200;
     padding: 20px 10px;
     text-align: center;
 }
 .single-promo i {
-  font-size: 50px;
+  font-weight: 50px;
 }
 
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
 
 .section-title {
   font-family: "Raleway",sans-serif;
-  font-size: 50px;
+  font-weight: 50px;
   font-weight: 100;
   margin-bottom: 50px;
   text-align: center;
@@ -289,7 +289,7 @@ z-index: 9;
     border-radius: 5px;
     color: #fff;
     display: block;
-    font-size: 16px;
+    font-weight: 16px;
     left: 10%;
     margin: 0;
     padding: 10px;
@@ -315,7 +315,7 @@ z-index: 9;
 .product-hover a.add-to-cart-link {top: -25%;}
 .product-hover a.view-details-link { bottom: -25%;}
 .single-product h2 {
-    font-size: 18px;
+    font-weight: 18px;
     line-height: 25px;
     margin-bottom: 10px;
     margin-top: 15px;
@@ -374,7 +374,7 @@ z-index: 9;
 
 .product-wid-title {
   font-family: raleway;
-  font-size: 30px;
+  font-weight: 30px;
   font-weight: 100;
   margin-bottom: 40px;
 }
@@ -391,7 +391,7 @@ z-index: 9;
     width: 100px;
 }
 .single-wid-product h2 {
-    font-size: 18px;
+    font-weight: 18px;
     margin-bottom: 12px;
 }
 .product-wid-rating {
@@ -439,7 +439,7 @@ padding: 35px 0 180px;}
 }
 .footer-wid-title {
   font-family: raleway;
-  font-size: 30px;
+  font-weight: 30px;
   font-weight: 100;color: #fff
 }
 
@@ -465,7 +465,7 @@ padding: 35px 0 180px;}
   background: none repeat scroll 0 0 #1abc9c;
   color: #fff;
   display: inline-block;
-  font-size: 20px;
+  font-weight: 20px;
   height: 40px;
   margin-bottom: 10px;
   margin-right: 10px;
@@ -491,9 +491,10 @@ padding: 35px 0 180px;}
     border: medium none;
     color: #fff;
     display: inline-block;
-    font-size: 18px;
+    font-weight: 18px;
     padding: 7px 20px;
-    text-transform: uppercase;border: 1px solid #1abc9c;
+    text-transform: uppercase;
+    border: 1px solid #1abc9c;
 }
 .newsletter-form input[type="submit"]:hover {background: #222;border-color: #666}
 .newsletter-form {
@@ -552,7 +553,7 @@ width: 10px;
 }
 
 .footer-card-icon {
-  font-size: 30px;
+  font-weight: 30px;
   text-align: right;
 }
 
@@ -564,7 +565,7 @@ width: 10px;
 
 .product-bit-title h2 {
   font-family: raleway;
-  font-size: 50px;
+  font-weight: 50px;
   font-weight: 200;
   margin: 0;
   padding: 50px 0;color: #fff;
@@ -582,7 +583,7 @@ width: 10px;
 
 .sidebar-title {
     color: #3dc6ab;
-    font-size: 25px;
+    font-weight: 25px;
     margin-bottom: 30px;
     text-transform: uppercase;
 }
@@ -616,7 +617,7 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
     width: 63px;
 }
 .thubmnail-recent > h2 {
-    font-size: 20px;
+    font-weight: 20px;
     margin-bottom: 10px;
 }
 .thubmnail-recent > h2 a {
@@ -670,7 +671,7 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
     width: 76px;
 }
 .product-name {
-    font-size: 25px;
+    font-weight: 25px;
     margin-bottom: 20px;
 }
 .product-inner-price {
@@ -723,7 +724,7 @@ form.cart {
 .product-tab li a {
     color: #222;
     display: block;
-    font-size: 16px;
+    font-weight: 16px;
     padding: 10px 30px;
 }
 .product-tab li a:hover {
@@ -733,7 +734,7 @@ form.cart {
     text-decoration: none;
 }
 .tab-content h2 {
-    font-size: 20px;
+    font-weight: 20px;
 }
 .tab-content {
     margin-bottom: 30px;
@@ -752,7 +753,7 @@ form.cart {
     font-weight: 700;
 }
 .rating-wrap-post {
-    font-size: 20px;
+    font-weight: 20px;
 }
 
 .submit-review textarea {
@@ -763,7 +764,7 @@ form.cart {
   margin-top: 30px;
 }
 .related-products-title {color: #3dc6ab;
-font-size: 25px;
+font-weight: 25px;
 margin-bottom: 30px;
 text-transform: uppercase;}
 
@@ -789,7 +790,7 @@ table.shop_table th, table.shop_table td {
 }
 table.shop_table th {
     background: none repeat scroll 0 0 #f4f4f4;
-    font-size: 15px;
+    font-weight: 15px;
     text-transform: uppercase;
 }
 td.product-thumbnail img {
@@ -797,7 +798,7 @@ td.product-thumbnail img {
     width: 70px;
 }
 td.product-name {
-    font-size: 18px;
+    font-weight: 18px;
 }
 div.quantity input.plus, div.quantity input.minus {
     background: none repeat scroll 0 0 #1abc9c;
@@ -829,7 +830,7 @@ td.actions div.coupon {
 }
 .cart-collaterals h2 {
     color: #1abc9c;
-    font-size: 25px;
+    font-weight: 25px;
     margin-bottom: 25px;
     text-transform: uppercase;
 }
@@ -868,7 +869,7 @@ div.cart-collaterals ul.products li.product .onsale {
 }
 div.cart-collaterals ul.products li.product h3 {
     color: #333;
-    font-size: 20px;
+    font-weight: 20px;
     margin-top: 15px;
 }
 div.cart-collaterals ul.products li.product .price {
@@ -890,7 +891,7 @@ div.cart-collaterals ul.products li.product .price ins {
 
 .woocommerce-info {
     background: none repeat scroll 0 0 #f4f4f4;
-    font-size: 18px;
+    font-weight: 18px;
     margin-bottom: 20px;
     padding: 15px;
 }
@@ -913,7 +914,7 @@ div.cart-collaterals ul.products li.product .price ins {
 }
 #customer_details h3 {
     color: #1abc9c;
-    font-size: 20px;
+    font-weight: 20px;
     text-transform: uppercase;
 }
 .create-account {
@@ -923,7 +924,7 @@ div.cart-collaterals ul.products li.product .price ins {
 }
 #order_review_heading {
     color: #1abc9c;
-    font-size: 20px;
+    font-weight: 20px;
     text-transform: uppercase;
 }
 #payment ul.payment_methods {
@@ -935,7 +936,7 @@ div.cart-collaterals ul.products li.product .price ins {
     margin-bottom: 15px;
 }
 a.about_paypal {
-    font-size: 12px;
+    font-weight: 12px;
     margin-left: 15px;
 }
 
@@ -991,7 +992,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 
 .single-shop-product h2 {
-    font-size: 20px;
+    font-weight: 20px;
     margin: 10px 0;
 }
 .product-option-shop {
@@ -1003,3 +1004,4 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .pagination > li > a, .pagination > li > span {
   color: #1abc9c;
 }
+

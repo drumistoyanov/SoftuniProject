@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Authentication.ExtendedProtection;
 using GroceryStore.Data.Common.Models;
 
 namespace GroceryStore.Data.Models
@@ -13,6 +14,9 @@ namespace GroceryStore.Data.Models
         [Required]
         [Url]
         public string PictureUrl { get; set; }
+
+        [Required]
+        public Kind Kind{ get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 3)]
