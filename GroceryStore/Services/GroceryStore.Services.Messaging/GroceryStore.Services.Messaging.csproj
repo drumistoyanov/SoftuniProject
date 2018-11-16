@@ -17,12 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.1.6" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SendGrid">
-      <HintPath>..\..\..\..\..\..\.nuget\packages\sendgrid\9.10.0\lib\netstandard2.0\SendGrid.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Sendgrid" Version="9.10.0" />
   </ItemGroup>
 
 </Project>

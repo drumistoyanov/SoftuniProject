@@ -6,6 +6,10 @@ namespace GroceryStore.Data.Models
 {
     public class Manufacturer : BaseModel<int>
     {
+        public Manufacturer()
+        {
+            this.Products=new HashSet<Product>();
+        }
         [Required]
         [StringLength(30, MinimumLength = 5)]
         public string Name { get; set; }
@@ -16,6 +20,6 @@ namespace GroceryStore.Data.Models
         [Url]
         public string LogoUrl { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; } = new HashSet<Product>();
+        public virtual ICollection<Product> Products { get; set; } 
     }
 }

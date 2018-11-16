@@ -7,6 +7,11 @@ namespace GroceryStore.Data.Models
 {
     public class Product : BaseModel<int>
     {
+        public Product()
+        {
+                this.Images=new HashSet<Image>();
+        }
+
         [Required]
         [MinLength(5)]
         public string Name { get; set; }
@@ -36,6 +41,6 @@ namespace GroceryStore.Data.Models
         [Required]
         public Manufacturer Manufacturer { get; set; }
 
-        public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
+        public virtual ICollection<Image> Images { get; set; } 
     }
 }
