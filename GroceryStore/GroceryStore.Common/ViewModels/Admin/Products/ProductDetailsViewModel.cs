@@ -13,8 +13,8 @@ namespace GroceryStore.Common.ViewModels.Admin.Products
         public string PictureUrl { get; set; }
         
         public string Type { get; set; }
-        
-        public string Brand { get; set; }
+
+        public Kind Kind { get; set; }
         
         public string Description { get; set; }
 
@@ -28,6 +28,6 @@ namespace GroceryStore.Common.ViewModels.Admin.Products
 
         public Manufacturer Manufacturer { get; set; }
         
-        public ICollection<Manufacturer> Images { get; set; }
+        public ICollection<Image> Images { get; set; }
     }
 }

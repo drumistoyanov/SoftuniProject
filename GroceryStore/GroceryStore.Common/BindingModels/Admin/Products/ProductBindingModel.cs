@@ -24,6 +24,8 @@ namespace GroceryStore.Common.BindingModels.Admin.Products
         [MinLength(10)]
         public string Description { get; set; }
 
+        public Kind Kind { get; set; }
+
         public decimal Weight { get; set; }
 
         [Range(typeof(decimal), ValidationConstants.MinDecimal, ValidationConstants.MaxDecimal)]

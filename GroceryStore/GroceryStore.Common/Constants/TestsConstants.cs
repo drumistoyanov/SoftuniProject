@@ -6,13 +6,13 @@
 
         public const string EditLogo= "EditLogo{0}";
 
-        public const string EditBrand = "EditBrand{0}";
+        public const string EditType = "EditType{0}";
 
         public const string Manufacturer= "Manufacturer{0}";
 
         public const string Product = "Product{0}";
 
-        public const string Brand = "Brand{0}";
+        public const string Type = "Type{0}";
 
         public const string Test= "Test{0}";
 

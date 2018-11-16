@@ -1,0 +1,26 @@
+﻿@using GroceryStore.Web.Infrastructure.Helpers
+@model GroceryStore.Common.BindingModels.Admin.Images.ImageBindingModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Image</h2>
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @Html.FormGroupFor(model => model.Url)
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-push2">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a class="btn btn-default"
+               asp-area="Admin" asp-controller="Products" asp-action="Details" asp-route-id="@ViewData["ProductId"]">
+                Back
+            </a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

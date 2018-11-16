@@ -32,7 +32,7 @@
     <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="user-menu">
                         <ul>
 
@@ -42,22 +42,31 @@
 
                             <li><a asp-controller="ShoppingCart" asp-action="Index"><i class="fa fa-user"></i> My Cart</a></li>
                             <li><a asp-controller="Checkout" asp-action="Index"><i class="fa fa-user"></i> Checkout</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            @if (this.User.IsInRole("Administrator"))
+                            {
 
-                <div class="col-md-4">
-                    <div class="header-right">
+                                <a  asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs " ></i>Users</a>
+                                <a  asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs " ></i>Manufacturers</a>
+                                <a  asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs " ></i>Products</a>
 
-                        <div id="google_translate_element"></div>
-                        <script type="text/javascript">
-                            function googleTranslateElementInit() {
-                                new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
                             }
-                        </script>
-                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </ul>
+                        
                     </div>
                 </div>
+
+                @*<div class="col-md-4">
+                        <div class="header-right">
+
+                            <div id="google_translate_element"></div>
+                            <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+                                }
+                            </script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </div>*@
             </div>
         </div>
     </div> <!-- End header area -->
@@ -68,8 +77,9 @@
                     <div class="logo">
                         <h1><a asp-controller="Home" asp-action="Index"> g<span>GroceryStore</span></a></h1>
                     </div>
-                </div>
 
+                </div>
+              
                 <div class="col-sm-6">
                     <div class="shopping-item">
                         <a asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
