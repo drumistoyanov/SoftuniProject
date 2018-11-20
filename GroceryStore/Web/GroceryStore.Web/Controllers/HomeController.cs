@@ -6,7 +6,7 @@
     {
         public IActionResult Index()
         {
-            return this.View();
+            return this.View("~/Views/Home/Index.cshtml");
         }
 
         public IActionResult Contact()
