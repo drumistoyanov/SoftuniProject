@@ -27,8 +27,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GroceryStore.Data.Models\GroceryStore.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\GroceryStore.Data\GroceryStore.Data.csproj" />
+    <ProjectReference Include="..\..\GroceryStore.Common\GroceryStore.Common.csproj" />
     <ProjectReference Include="..\..\Services\GroceryStore.Services.Messaging\GroceryStore.Services.Messaging.csproj" />
     <ProjectReference Include="..\..\Services\GroceryStore.Services\GroceryStore.Services.csproj" />
     <ProjectReference Include="..\GroceryStore.Web.Infrastructure\GroceryStore.Web.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\seedfiles\" />
   </ItemGroup>
 </Project>

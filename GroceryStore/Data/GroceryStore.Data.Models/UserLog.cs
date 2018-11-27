@@ -1,13 +1,14 @@
 ﻿using System;
-using GroceryStore.Data.Common.Models;
 
 namespace GroceryStore.Data.Models
 {
-    public class UserLog : BaseModel<int>
+    public class UserLog 
     {
+        public int Id { get; set; }
+
         public int UserId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public User User { get; set; }
 
         public DateTime DateOfRegistration { get; set; }
     }

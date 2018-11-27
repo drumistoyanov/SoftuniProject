@@ -15,13 +15,13 @@ namespace GroceryStore.Services.Admin
 {
     public class AdminUsersService : BaseEFService,IAdminUsersService
     {
-        private UserManager<ApplicationUser> userManager;
-        private SignInManager<ApplicationUser> signInManager;
+        private UserManager<User> userManager;
+        private SignInManager<User> signInManager;
 
         public AdminUsersService(GroceryStoreDbContext dbContext, 
             IMapper mapper,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager) 
+            UserManager<User> userManager,
+            SignInManager<User> signInManager) 
             : base(dbContext, mapper)
         {
             this.userManager = userManager;
@@ -76,7 +76,7 @@ namespace GroceryStore.Services.Admin
             this.DbContext.SaveChanges();
         }
 
-        private void CheckIfUserExist(ApplicationUser user)
+        private void CheckIfUserExist(User user)
         {
             if (user == null)
             {

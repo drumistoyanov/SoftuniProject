@@ -17,9 +17,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.6" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\GroceryStore.Data.Common\GroceryStore.Data.Common.csproj" />
-  </ItemGroup>
   
 </Project>

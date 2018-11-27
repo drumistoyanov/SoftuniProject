@@ -1,10 +1,10 @@
 ﻿using System;
-using GroceryStore.Data.Common.Models;
 
 namespace GroceryStore.Data.Models
 {
-    public class OrderLog : BaseModel<int>
+    public class OrderLog 
     {
+        public int Id { get; set; }
 
         public int OrderId { get; set; }
 

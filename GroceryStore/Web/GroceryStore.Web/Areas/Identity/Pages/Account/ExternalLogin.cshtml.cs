@@ -18,13 +18,13 @@ namespace GroceryStore.Web.Areas.Identity.Pages.Account
     public class ExternalLoginModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<User> signInManager;
+        private readonly UserManager<User> userManager;
         private readonly ILogger<ExternalLoginModel> logger;
 
         public ExternalLoginModel(
-            SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager,
+            SignInManager<User> signInManager,
+            UserManager<User> userManager,
             ILogger<ExternalLoginModel> logger)
         {
             this.signInManager = signInManager;
@@ -114,7 +114,7 @@ namespace GroceryStore.Web.Areas.Identity.Pages.Account
 
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new User { UserName = this.Input.Email, Email = this.Input.Email };
                 var result = await this.userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

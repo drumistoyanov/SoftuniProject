@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GroceryStore.Data;
 using GroceryStore.Data.Models;
+using GroceryStore.Data.Seeding;
 using GroceryStore.Services.Admin;
 using GroceryStore.Services.Admin.Interfaces;
 using GroceryStore.Services.ManufacturersProducts;
@@ -48,9 +49,11 @@ namespace GroceryStore.Web
 
             services.AddDbContext<GroceryStoreDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    Configuration.GetConnectionString("DefaultConnection")));          
+
+            services.AddIdentity<User,IdentityRole>()
                 .AddDefaultUI()
+                .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<GroceryStoreDbContext>();
 
@@ -82,7 +85,7 @@ namespace GroceryStore.Web
                     RequireNonAlphanumeric = false
                 };
 
-                options.SignIn.RequireConfirmedEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
             });
 
             services.AddAutoMapper();
@@ -98,7 +101,7 @@ namespace GroceryStore.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
-            UserManager<ApplicationUser> userManager,
+            UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
@@ -112,6 +115,8 @@ namespace GroceryStore.Web
                 app.UseHsts();
             }
 
+            roleManager.CreateAsync(new IdentityRole("Admin"));
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -119,8 +124,7 @@ namespace GroceryStore.Web
             app.UseSession();
 
             app.UseAuthentication();
-            
-
+            app.SeedDatabase();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -140,9 +144,9 @@ namespace GroceryStore.Web
             services.AddScoped<IAdminProductsService, AdminProductsService>();
             services.AddScoped<IAdminImagesService, AdminImagesService>();
             services.AddScoped<IProductsService, ProductsService>();
-            services.AddScoped<IManufacturerProductsServices, ManufacturerProductsServices>();
+            services.AddScoped<IManufacturerProductsServices,ManufacturerProductsServices>();
             services.AddScoped<IOrdersService, OrdersService>();
-            services.AddScoped<ITypesService, TypesService>();
+            services.AddScoped<ITypesService,TypesService>();
         }
     }
 }

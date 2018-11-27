@@ -4,14 +4,16 @@ using GroceryStore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroceryStore.Data.Migrations
 {
     [DbContext(typeof(GroceryStoreDbContext))]
-    partial class GroceryStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181127142559_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,15 +161,10 @@ namespace GroceryStore.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("DateOfRegistration");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FullName")
-                        .HasMaxLength(50);
 
                     b.Property<bool>("LockoutEnabled");
 

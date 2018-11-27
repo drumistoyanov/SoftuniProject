@@ -19,13 +19,11 @@ namespace GroceryStore.Common.BindingModels.Admin.Products
         [Required]
         [StringLength(20, ErrorMessage = ValidationConstants.ErrorMessageForMinAndMaxLength, MinimumLength = 3)]
         public string Type { get; set; }
-
+        
         [Required]
-        [MinLength(10)]
-        public string Description { get; set; }
-
         public Kind Kind { get; set; }
 
+        [Required]
         public decimal Weight { get; set; }
 
         [Range(typeof(decimal), ValidationConstants.MinDecimal, ValidationConstants.MaxDecimal)]

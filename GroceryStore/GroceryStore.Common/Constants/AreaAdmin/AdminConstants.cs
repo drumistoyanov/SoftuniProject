@@ -6,11 +6,11 @@
 
         public const string Admin = "admin";
 
-        public const string AdminEmail = "admin@gmail.com";
+        public const string AdminEmail = "admin@admin.admin";
 
-        public const string AdminPassword = "admin30";
+        public const string AdminPassword = "admin123";
 
-        public const string AdminFullName= "Admin Adminov";
+        public const string AdminFullName= "Drumi Stoyanov";
 
         public const string AdminRoleName = "Administrator";
 

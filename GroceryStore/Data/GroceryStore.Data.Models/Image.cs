@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
-using GroceryStore.Data.Common;
-using GroceryStore.Data.Common.Models;
 
 namespace GroceryStore.Data.Models
 {
-    public class Image : BaseModel<int>
+    public class Image 
     {
+        public int Id { get; set; }
         [Required]
         [Url]
         public string Url { get; set; }

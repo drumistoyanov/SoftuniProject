@@ -1,16 +1,15 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
+using System.ComponentModel.DataAnnotations;
+
 namespace GroceryStore.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using GroceryStore.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
-
-    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
+    public class User : IdentityUser
     {
-        public ApplicationUser()
+        public User()
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
@@ -19,15 +18,10 @@ namespace GroceryStore.Data.Models
             this.Orders=new HashSet<Order>();
         }
 
-        // Audit info
-        public DateTime CreatedOn { get; set; }
+        [StringLength(50, MinimumLength = 5)]
+        public string FullName { get; set; }
 
-        public DateTime? ModifiedOn { get; set; }
-
-        // Deletable entity
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
+        public DateTime DateOfRegistration { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

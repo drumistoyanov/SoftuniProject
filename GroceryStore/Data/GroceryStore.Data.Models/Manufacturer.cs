@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using GroceryStore.Data.Common.Models;
 
 namespace GroceryStore.Data.Models
 {
-    public class Manufacturer : BaseModel<int>
+    public class Manufacturer 
     {
         public Manufacturer()
         {
             this.Products=new HashSet<Product>();
+
         }
+        public int Id { get; set; }
+
+
         [Required]
         [StringLength(30, MinimumLength = 5)]
         public string Name { get; set; }

@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using GroceryStore.Data.Common.Models;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace GroceryStore.Data.Models
 {
-    public class OrderProduct : BaseModel<int>
+    public class OrderProduct 
     {
+        public int Id { get; set; }
+
+
         public int OrderId { get; set; }
 
         public Order Order { get; set; }

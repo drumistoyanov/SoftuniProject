@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Authentication.ExtendedProtection;
-using GroceryStore.Data.Common.Models;
+
 
 namespace GroceryStore.Data.Models
 {
-    public class Product : BaseModel<int>
+    public class Product 
     {
         public Product()
         {
                 this.Images=new HashSet<Image>();
         }
+
+        public int Id { get; set; }
+
 
         [Required]
         [MinLength(5)]

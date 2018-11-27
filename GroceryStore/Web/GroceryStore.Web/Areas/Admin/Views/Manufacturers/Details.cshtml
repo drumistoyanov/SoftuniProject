@@ -20,9 +20,16 @@
             <br />
             <div><img src="@Model.LogoUrl" alt="@Model.Name" width="150" height="150" /></div>
             @await Html.PartialAsync("_ProductsViewPartial", Model.Products)
+            
         </div>
+        
+   
+    <br/>
     </div>
-    <br />
+    <a class="btn btn-default"
+       asp-area="Admin" asp-controller="Manufacturers" asp-action="Index">
+        Back
+    </a>
     @await Html.PartialAsync("_NavManufacturerDetailsPartial", pagesViewModel)
 </main>
 
