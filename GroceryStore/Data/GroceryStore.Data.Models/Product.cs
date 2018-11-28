@@ -6,11 +6,11 @@ using System.Security.Authentication.ExtendedProtection;
 
 namespace GroceryStore.Data.Models
 {
-    public class Product 
+    public class Product
     {
         public Product()
         {
-                this.Images=new HashSet<Image>();
+            this.Images = new HashSet<Image>();
         }
 
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace GroceryStore.Data.Models
         public string PictureUrl { get; set; }
 
         [Required]
-        public Kind Kind{ get; set; }
+        public string Kind { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 3)]
@@ -41,10 +41,9 @@ namespace GroceryStore.Data.Models
         public decimal Price { get; set; }
 
         public int ManufacturerId { get; set; }
-
-        [Required]
+        
         public Manufacturer Manufacturer { get; set; }
 
-        public virtual ICollection<Image> Images { get; set; } 
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

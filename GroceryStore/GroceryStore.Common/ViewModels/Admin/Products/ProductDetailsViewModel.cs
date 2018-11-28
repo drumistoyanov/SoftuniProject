@@ -14,7 +14,7 @@ namespace GroceryStore.Common.ViewModels.Admin.Products
         
         public string Type { get; set; }
 
-        public Kind Kind { get; set; }  
+        public string Kind { get; set; }  
 
         public decimal Weight { get; set; }
         

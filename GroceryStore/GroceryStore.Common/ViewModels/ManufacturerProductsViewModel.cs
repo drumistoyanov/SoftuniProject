@@ -4,7 +4,7 @@ using GroceryStore.Data.Models;
 
 namespace GroceryStore.Common.ViewModels
 {
-    public class ManufacturersProductsViewModel
+    public class ManufacturerProductsViewModel
     {
         public IEnumerable<Manufacturer> Manufacturers { get; set; }
 

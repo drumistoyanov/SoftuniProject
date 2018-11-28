@@ -56,7 +56,7 @@ namespace GroceryStore.Data.Seeding
                 //                var jsonManufacturers = File.ReadAllText(@"wwwroot\seedfiles\manufacturers.json");
                 //                var manufacturerDtos = JsonConvert.DeserializeObject<ManufacturerDto[]>(jsonManufacturers);
 
-                //                SeedTeams(context, manufacturerDtos);
+                //                SeedManufacturers(context, manufacturerDtos);
                 //            }
 
                 //            if (!context.Products.Any())
@@ -77,9 +77,9 @@ namespace GroceryStore.Data.Seeding
                 //        }
                 //    }
 
-                //    private static void SeedTeams(GroceryStoreDbContext context, ManufacturerDto[] teamDtos)
+                //    private static void SeedManufacturers(GroceryStoreDbContext context, ManufacturerDto[] manufacturerDtos)
                 //    {
-                //        var teamsToCreate = teamDtos
+                //        var manufacturersToCreate = manufacturerDtos
                 //            .Select(t => new Manufacturer
                 //            {
                 //                Name = t.Name,
@@ -87,7 +87,7 @@ namespace GroceryStore.Data.Seeding
                 //            })
                 //            .ToArray();
 
-                //        context.Manufacturers.AddRange(teamsToCreate);
+                //        context.Manufacturers.AddRange(manufacturersToCreate);
                 //        context.SaveChanges();
                 //    }
 

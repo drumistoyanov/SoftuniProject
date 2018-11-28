@@ -33,7 +33,7 @@ namespace GroceryStore.Web.Pages
         }
          
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> OnPost(int id)
+        public async  Task <IActionResult> OnPost(int id)
         {
 
             this.TempData[AdminConstants.MessageType] = AdminConstants.Success;

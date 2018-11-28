@@ -14,6 +14,6 @@ namespace GroceryStore.Common.ViewModels
 
         public PagesViewModel Page { get; set; }
 
-        public string Type { get; set; }
+        public string Kind { get; set; }
     }
 }

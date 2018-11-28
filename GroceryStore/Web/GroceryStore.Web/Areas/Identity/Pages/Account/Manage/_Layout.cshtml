@@ -1,18 +1,225 @@
-﻿<h2>Manage your account</h2>
-
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
-        </div>
-    </div>
-</div>
-
-@section Scripts {
+﻿@section Scripts {
     @RenderSection("Scripts", required: false)
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gGrocery Store</title>
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+</head>
+<body>
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="user-menu">
+                        <ul>
+
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index"> Home</a></li>
+                            <li><partial name="_LoginPartial" /></li>
+
+
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-user"></i> My Account</a></li>
+                                <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items"><i class="fa fa-user"></i> My Cart</a></li>
+                                <li><a asp-area="" asp-page="/Orders/MyOrders"><i class="fa fa-user"></i> Checkout</a></li>
+                            }
+                            @if (this.User.IsInRole("Administrator"))
+                            {
+
+                                <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs "></i>Users</a>
+                                <a asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs "></i>Manufacturers</a>
+                                <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs "></i>Products</a>
+
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+
+                @*<div class="col-md-4">
+                        <div class="header-right">
+
+                            <div id="google_translate_element"></div>
+                            <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+                                }
+                            </script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div> <!-- End header area -->
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a asp-area="" asp-controller="Home" asp-action="Index"> g<span>GroceryStore</span></a></h1>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a asp-controller="Home" asp-action="Index"> Home</a></li>
+                        <li><a asp-controller="Shop" asp-action="Index">Shop page</a></li>
+                        <li><a asp-controller="Product" asp-action="Index">Single product</a></li>
+                        <li><a asp-controller="ShoppingCart" asp-action="Index">Cart</a></li>
+                        <li><a asp-controller="Checkout" asp-action="Index">Checkout</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                        <li class="nav-item"><a asp-area="" asp-controller="Mens" asp-action="Index" class="nav-link">Mens</a></li>
+                        <li class="nav-item"><a asp-area="" asp-controller="Ladies" asp-action="Index" class="nav-link">Ladies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+<h2>Manage your account</h2>
+
+<div>
+<h4>Change your account settings</h4>
+<hr />
+<div class="row">
+<div class="col-md-3">
+    <partial name="_ManageNav" />
+</div>
+<div class="col-md-9">
+    @RenderBody()
+</div>
+    <div class="promo-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-refresh"></i>
+                        <p>30 Days return</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-truck"></i>
+                        <p>Free shipping</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-lock"></i>
+                        <p>Secure payments</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-gift"></i>
+                        <p>New products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End promo area -->
+
+    <div class="brands-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="brand-wrapper">
+                        <h2 class="section-title">Brands</h2>
+                        <div class="brand-list">
+                            <img src="/img/services_logo__1.jpg" alt="">
+                            <img src="/img/services_logo__2.jpg" alt="">
+                            <img src="/img/services_logo__3.jpg" alt="">
+                            <img src="/img/services_logo__4.jpg" alt="">
+                            <img src="/img/services_logo__1.jpg" alt="">
+                            <img src="/img/services_logo__2.jpg" alt="">
+                            <img src="/img/services_logo__3.jpg" alt="">
+                            <img src="/img/services_logo__4.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End brands area -->
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; 2015 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="~/js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
