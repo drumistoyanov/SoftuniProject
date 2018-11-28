@@ -32,20 +32,24 @@
 
                             <li><a asp-area="" asp-controller="Home" asp-action="Index"> Home</a></li>
                             <li><partial name="_LoginPartial" /></li>
-                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-user"></i> My Account</a></li>
 
-                            <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Index"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a asp-area="" asp-controller="Checkout" asp-action="Index"><i class="fa fa-user"></i> Checkout</a></li>
+
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-user"></i> My Account</a></li>
+                                <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items"><i class="fa fa-user"></i> My Cart</a></li>
+                                <li><a  asp-area="" asp-page="/Orders/MyOrders"><i class="fa fa-user"></i> Checkout</a></li>
+                            }
                             @if (this.User.IsInRole("Administrator"))
                             {
 
-                                <a  asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs " ></i>Users</a>
-                                <a  asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs " ></i>Manufacturers</a>
-                                <a  asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs " ></i>Products</a>
+                                <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs "></i>Users</a>
+                                <a asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs "></i>Manufacturers</a>
+                                <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs "></i>Products</a>
 
                             }
                         </ul>
-                        
+
                     </div>
                 </div>
 
@@ -73,7 +77,7 @@
                     </div>
 
                 </div>
-              
+
                 <div class="col-sm-6">
                     <div class="shopping-item">
                         <a asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>

@@ -16,6 +16,8 @@ namespace GroceryStore.Data.Models
 
         public User User { get; set; }
 
+        public DateTime DateOfOrdering { get; set; }
+
         public decimal TotalPrice { get; set; }
 
         public virtual ICollection<OrderProduct> OrderProducts { get; set; } 

@@ -13,18 +13,18 @@ namespace GroceryStore.Services.ShopCart
             this.carts = new ConcurrentDictionary<string, ShoppingCart>();
         }
 
-        public void AddToCart(string id, int productId, int quantity, string size)
+        public void AddToCart(string id, int productId, int quantity, decimal weight)
         {
             var shopingCart = this.GetShoppingCart(id);
 
-            shopingCart.AddToCart(productId, quantity,size);
+            shopingCart.AddToCart(productId, quantity,weight);
         }
         
-        public void RemoveFromCart(string id, int productId,string size)
+        public void RemoveFromCart(string id, int productId, decimal weight)
         {
             var shopingCart = this.GetShoppingCart(id);
 
-            shopingCart.RemoveFromCart(productId,size);
+            shopingCart.RemoveFromCart(productId,weight);
         }
 
         public void Clear(string id)

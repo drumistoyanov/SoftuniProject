@@ -21,6 +21,6 @@ namespace GroceryStore.Services.Admin.Interfaces
 
         Task DeleteProduct(int id);
 
-        Task SetSizeToProductById(int id,decimal weight);
+        Task SetWeightToProductById(int id,decimal weight);
     }
 }

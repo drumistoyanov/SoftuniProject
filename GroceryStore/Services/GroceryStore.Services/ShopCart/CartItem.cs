@@ -6,6 +6,6 @@
 
         public int Quantity { get; set; }
 
-        public string Size { get; set; }
+        public decimal Weight { get; set; }
     }
 }

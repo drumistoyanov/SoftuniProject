@@ -97,7 +97,7 @@ namespace GroceryStore.Services.Admin
             await this.DbContext.SaveChangesAsync();
         }
 
-        public async Task SetSizeToProductById(int id,decimal weight)
+        public async Task SetWeightToProductById(int id,decimal weight)
         {
             var product = await this.DbContext.Products.FindAsync(id);
             this.CheckIfProductExist(product);

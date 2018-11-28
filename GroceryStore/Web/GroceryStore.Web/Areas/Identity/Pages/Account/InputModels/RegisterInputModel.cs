@@ -1,4 +1,6 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
+﻿using System;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -18,6 +20,9 @@
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Display(Name = "Date Of Registration")]
+        public DateTime DateOfRegistration { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

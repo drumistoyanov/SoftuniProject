@@ -14,16 +14,16 @@ namespace GroceryStore.Services.ShopCart
         
         public IEnumerable<CartItem> Items => new List<CartItem>(this.items);
 
-        public void AddToCart(int productId,int quantity,string size)
+        public void AddToCart(int productId,int quantity,decimal weight)
         {
-            var cartItem = this.items.SingleOrDefault(x => x.ProductId == productId && x.Size==size);
+            var cartItem = this.items.SingleOrDefault(x => x.ProductId == productId && x.Weight==weight);
             if (cartItem == null)
             {
                 cartItem = new CartItem()
                 {
                     ProductId = productId,
                     Quantity = quantity,
-                    Size=size
+                    Weight= weight
                 };
 
                 this.items.Add(cartItem);
@@ -34,10 +34,10 @@ namespace GroceryStore.Services.ShopCart
             }
         }
 
-        public void RemoveFromCart(int productId,string size)
+        public void RemoveFromCart(int productId,decimal weight)
         {
             var cartItem = this.items
-                .FirstOrDefault(x => x.ProductId == productId && x.Size==size);
+                .FirstOrDefault(x => x.ProductId == productId && x.Weight==weight);
 
             if (cartItem != null)
             {
