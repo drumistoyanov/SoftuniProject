@@ -1,7 +1,8 @@
-﻿namespace GroceryStore.Data
+﻿#pragma warning disable SA1652 // Enable XML documentation output
+namespace GroceryStore.Data
+#pragma warning restore SA1652 // Enable XML documentation output
 {
     using System.IO;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;
     using Microsoft.EntityFrameworkCore.Diagnostics;

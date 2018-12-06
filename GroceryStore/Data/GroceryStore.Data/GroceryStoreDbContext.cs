@@ -1,10 +1,6 @@
 ﻿namespace GroceryStore.Data
 {
-    using System;
     using System.Linq;
-    using System.Reflection;
-    using System.Threading;
-    using System.Threading.Tasks;
     using GroceryStore.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GroceryStore.Common.ViewModels;
 using GroceryStore.Common.ViewModels.Admin.Products;
@@ -12,12 +10,12 @@ namespace GroceryStore.Web.Controllers
 {
     public abstract class BaseKindProductsController : BaseController
     {
-        private string controllerName;
+        private readonly string _controllerName;
 
         protected BaseKindProductsController(
             IProductsService productsService, string controllerName)
         {
-            this.controllerName = controllerName;
+            this._controllerName = controllerName;
             this.ProductsService = productsService;
         }
         
@@ -177,7 +175,7 @@ namespace GroceryStore.Web.Controllers
                 MaxPage = maxPage,
                 AreaName = "",
                 ActionName = actionName,
-                ControllerName = controllerName
+                ControllerName = _controllerName
             };
 
             var manufacturers = this.GetAllManufacturers();

@@ -12,24 +12,23 @@ namespace GroceryStore.Web.Pages
 {
     public class ProductInfoModel : PageModel
     {
-        private readonly IAdminProductsService productsService;
-        private readonly ProductCountToBuy productCountToBuy;
+        private readonly IAdminProductsService _productsService;
+        private readonly ProductCountToBuy _productCountToBuy;
 
         public ProductInfoModel(IAdminProductsService productsService,ProductCountToBuy productCountToBuy)
         {
-            this.productsService = productsService;
-            this.productCountToBuy = productCountToBuy;
+            this._productsService = productsService;
+            this._productCountToBuy = productCountToBuy;
         }
 
         public int Quantity { get; set; } = 1;  
         
-
         public ProductDetailsViewModel ProductModel { get; set; }
 
         public async Task OnGet(int id)
         {
-            this.productCountToBuy.Number = 1;
-            this.ProductModel = await this.productsService.GetDetails(id);
+            this._productCountToBuy.Number = 1;
+            this.ProductModel = await this._productsService.GetDetails(id);
         }
          
         [ValidateAntiForgeryToken]
@@ -38,25 +37,25 @@ namespace GroceryStore.Web.Pages
 
             this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
             this.TempData[AdminConstants.Message] = PagesConstants.AddProductToCart;
-            this.Quantity = productCountToBuy.Number;
+            this.Quantity = _productCountToBuy.Number;
 
-            return RedirectToAction(PagesConstants.AddToCart, PagesConstants.ShoppingCart, new { id = id, quantity = this.Quantity});
+            return RedirectToAction(PagesConstants.AddToCart, PagesConstants.ShoppingCart, new {id, quantity = this.Quantity});
         }
 
         public async Task OnGetIncreaseCount(int id)
         {
-            this.ProductModel = await this.productsService.GetDetails(id);
+            this.ProductModel = await this._productsService.GetDetails(id);
 
-            this.productCountToBuy.Increase();
-            this.Quantity = this.productCountToBuy.Number;
+            this._productCountToBuy.Increase();
+            this.Quantity = this._productCountToBuy.Number;
         }
 
         public async Task OnGetDecreaseCount(int id)
         {
-            this.ProductModel = await this.productsService.GetDetails(id);
+            this.ProductModel = await this._productsService.GetDetails(id);
 
-            this.productCountToBuy.Decrease();
-            this.Quantity = this.productCountToBuy.Number;
+            this._productCountToBuy.Decrease();
+            this.Quantity = this._productCountToBuy.Number;
         }
     }
 }

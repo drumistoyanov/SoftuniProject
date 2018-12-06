@@ -8,13 +8,13 @@
 
         public const string Types = "Types";
 
-        public const string Mens = "Mens";
+        public const string Foods = "Food";
 
-        public const string Ladies = "Ladies";
+        public const string Drinks = "Drink";
 
-        public const string LadiesManufacturerProducts = "LadiesManufacturerProducts";
+        public const string DrinksManufacturerProducts = "DrinksManufacturerProducts";
 
-        public const string MensManufacturerProducts = "MensManufacturerProducts";
+        public const string FoodsManufacturerProducts = "FoodsManufacturerProducts";
 
         public const string SearchResult = "SearchResult";
     }

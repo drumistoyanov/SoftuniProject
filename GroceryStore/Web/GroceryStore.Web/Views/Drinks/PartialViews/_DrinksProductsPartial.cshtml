@@ -1,34 +1,32 @@
-﻿@model TypesProductsViewModel
+﻿@model ProductsViewModel
 
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
             <h3>Filter By</h3>
             @await Html.PartialAsync("_ManufacturersDropdownMenuPartial", Model.Manufacturers,
-           new ViewDataDictionary(this.ViewData) {
-              {
-                  "ControllerName", $"{Model.Kind}ManufacturerProducts"
-              } } )
-
+            new ViewDataDictionary(this.ViewData) {
+            {
+            "ControllerName", "DrinksManufacturerProducts"
+            } } )
             <br />
             <br />
-            <div>Types </div>
             <hr />
-
-            <form method="post" asp-controller="@Model.Kind" asp-action="SelectType">
+            <div>Types </div>
+            <form method="post" asp-controller="@Model.Page.ControllerName" asp-action="SelectType">
                 @await Html.PartialAsync("_TypesCheckBoxPartial", Model.Types)
             </form>
+
             <hr />
         </div>
         <div class="col-sm-10">
-            <h3>Nba Store @Model.Kind's Gear</h3>
+            <h3>Drinks</h3>
             <hr />
-            @await Html.PartialAsync("./_TypesSortDropdownMenuPartial.cshtml", Model)
+            @await Html.PartialAsync("_SortDropdownMenuPartial", Model.Page)
             <hr />
             @await Html.PartialAsync("_ProductsViewPartial", Model.Products)
             <br />
-            @await Html.PartialAsync("./_NavTypesPartial.cshtml", Model)
+            @await Html.PartialAsync("_NavPartial", Model.Page)
         </div>
     </div>
 </div>
-

@@ -38,7 +38,7 @@
                             {
                                 <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-user"></i> My Account</a></li>
                                 <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items"><i class="fa fa-user"></i> My Cart</a></li>
-                                <li><a  asp-area="" asp-page="/Orders/MyOrders"><i class="fa fa-user"></i> Checkout</a></li>
+                                <li><a asp-area="" asp-page="/Orders/MyOrders"><i class="fa fa-user"></i> Checkout</a></li>
                             }
                             @if (this.User.IsInRole("Administrator"))
                             {
@@ -80,7 +80,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Items">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                     </div>
                 </div>
             </div>
@@ -102,13 +102,12 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a asp-controller="Home" asp-action="Index"> Home</a></li>
                         <li><a asp-controller="Shop" asp-action="Index">Shop page</a></li>
-                        <li><a asp-controller="Product" asp-action="Index">Single product</a></li>
-                        <li><a asp-controller="ShoppingCart" asp-action="Index">Cart</a></li>
+                        <li><a asp-controller="ShoppingCart" asp-action="Items">Cart</a></li>
                         <li><a asp-controller="Checkout" asp-action="Index">Checkout</a></li>
                         <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        
-                        <li class="nav-item"><a asp-area="" asp-controller="Mens" asp-action="Index" class="nav-link">Mens</a></li>
-                        <li class="nav-item"><a asp-area="" asp-controller="Ladies" asp-action="Index" class="nav-link">Ladies</a></li>
+
+                        <li><a asp-area="" asp-controller="Foods" asp-action="Index" >Foods</a></li>
+                        <li><a asp-area="" asp-controller="Drinks" asp-action="Index">Drinks</a></li>
                     </ul>
                 </div>
             </div>

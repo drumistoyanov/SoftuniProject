@@ -32,8 +32,4 @@
     <ProjectReference Include="..\..\Services\GroceryStore.Services\GroceryStore.Services.csproj" />
     <ProjectReference Include="..\GroceryStore.Web.Infrastructure\GroceryStore.Web.Infrastructure.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\seedfiles\" />
-  </ItemGroup>
 </Project>

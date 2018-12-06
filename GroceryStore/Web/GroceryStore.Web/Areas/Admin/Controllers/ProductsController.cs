@@ -80,7 +80,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
             this.TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
                 AdminConstants.Product);
 
-            return RedirectToAction(AdminConstants.ActionDetails, new { id = id });
+            return RedirectToAction(AdminConstants.ActionDetails, new { id });
         }
 
         public IActionResult Delete(int id)

@@ -1,0 +1,42 @@
+﻿[
+  {
+    "Name": "Petit Beurre",
+    "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1300.jpg",
+    "Type": "Biscuits",
+    "Kind": "Food",
+    "Weight": "0.350",
+    "Discount": "10",
+    "Price": "1.50",
+    "ManufacturerName": "Simsek"
+  },
+  {
+    "Name": "Petit Beurre",
+    "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1312.jpg",
+    "Type": "Biscuits",
+    "Kind": "Food",
+    "Weight": "0.100",
+    "Discount": "0",
+    "Price": "1.00",
+    "ManufacturerName": "Simsek"
+  },
+  {
+    "Name": "Picnic Biscuit",
+    "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1322.jpg",
+    "Type": "Biscuits",
+    "Kind": "Food",
+    "Weight": "0.065",
+    "Discount": "0",
+    "Price": "0.5",
+    "ManufacturerName": "Simsek"
+  },
+  {
+    "Name": "Finger Biscuit",
+    "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1329.jpg",
+    "Type": "Biscuits",
+    "Kind": "Food",
+    "Weight": "0.600",
+    "Discount": "5",
+    "Price": "1.50",
+    "ManufacturerName": "Simsek"
+  }
+]
