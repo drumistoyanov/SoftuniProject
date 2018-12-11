@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿    using System.Linq;
 using GroceryStore.Common.Constants;
 using GroceryStore.Services.Products.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +28,7 @@ namespace GroceryStore.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index), ControllersConstants.Types, 
-                new {types, kind = ControllersConstants.Foods });
+                new {types=types, kind = ControllersConstants.Foods });
         }
 
         public IActionResult PriceHighLow(int id)

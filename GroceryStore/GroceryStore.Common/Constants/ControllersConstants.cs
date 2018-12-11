@@ -8,9 +8,9 @@
 
         public const string Types = "Types";
 
-        public const string Foods = "Food";
+        public const string Foods = "Foods";
 
-        public const string Drinks = "Drink";
+        public const string Drinks = "Drinks";
 
         public const string DrinksManufacturerProducts = "DrinksManufacturerProducts";
 

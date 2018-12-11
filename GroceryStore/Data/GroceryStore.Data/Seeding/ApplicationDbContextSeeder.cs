@@ -107,6 +107,7 @@
                         Discount = productDto.Discount,
                         Kind = productDto.Kind,
                         Type = productDto.Type,
+                        Weight = productDto.Weight,
                         ManufacturerId = manufacturerId,
                     };
 

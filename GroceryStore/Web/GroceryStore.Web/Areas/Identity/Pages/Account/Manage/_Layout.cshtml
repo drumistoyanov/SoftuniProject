@@ -1,7 +1,4 @@
-﻿@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,9 +7,9 @@
     <title>gGrocery Store</title>
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    @*<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>*@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -24,6 +21,8 @@
     <link rel="stylesheet" href="~/css/owl.carousel.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
 </head>
 <body>
     <div class="header-area">
@@ -83,7 +82,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Items">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                     </div>
                 </div>
             </div>
@@ -104,31 +103,19 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a asp-controller="Home" asp-action="Index"> Home</a></li>
-                        <li><a asp-controller="Shop" asp-action="Index">Shop page</a></li>
-                        <li><a asp-controller="Product" asp-action="Index">Single product</a></li>
                         <li><a asp-controller="ShoppingCart" asp-action="Items">Cart</a></li>
-                        <li><a asp-controller="Checkout" asp-action="Index">Checkout</a></li>
                         <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
 
-                        <li class="nav-item"><a asp-area="" asp-controller="Foods" asp-action="Index" class="nav-link">Foods</a></li>
-                        <li class="nav-item"><a asp-area="" asp-controller="Drinks" asp-action="Index" class="nav-link">Drinks</a></li>
+                        <li><a asp-area="" asp-controller="Foods" asp-action="Index">Foods</a></li>
+                        <li><a asp-area="" asp-controller="Drinks" asp-action="Index">Drinks</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div> <!-- End mainmenu area -->
-<h2>Manage your account</h2>
-
-<div>
-<h4>Change your account settings</h4>
-<hr />
-<div class="row">
-<div class="col-md-3">
-    <partial name="_ManageNav" />
-</div>
-<div class="col-md-9">
-    @RenderBody()
-</div>
+    <div>
+        @RenderBody()
+    </div>
     <div class="promo-area">
         <div class="zigzag-bottom"></div>
         <div class="container">

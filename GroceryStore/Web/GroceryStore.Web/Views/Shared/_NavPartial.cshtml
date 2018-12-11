@@ -85,7 +85,7 @@
 
     @if (Model.MaxPage > 2)
     {
-        @if (Model.CurrentPage != Model.MaxPage)
+        if (Model.CurrentPage != Model.MaxPage)
         {
             <li class="nav-item">
                 <a class="nav-link" asp-area="@Model.AreaName" asp-controller="@Model.ControllerName" asp-action="@Model.ActionName" asp-route-id="@Model.MaxPage">

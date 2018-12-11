@@ -3,7 +3,7 @@
     "Name": "Petit Beurre",
     "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1300.jpg",
     "Type": "Biscuits",
-    "Kind": "Food",
+    "Kind": "Foods",
     "Weight": "0.350",
     "Discount": "10",
     "Price": "1.50",
@@ -13,7 +13,7 @@
     "Name": "Petit Beurre",
     "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1312.jpg",
     "Type": "Biscuits",
-    "Kind": "Food",
+    "Kind": "Foods",
     "Weight": "0.100",
     "Discount": "0",
     "Price": "1.00",
@@ -23,7 +23,7 @@
     "Name": "Picnic Biscuit",
     "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1322.jpg",
     "Type": "Biscuits",
-    "Kind": "Food",
+    "Kind": "Foods",
     "Weight": "0.065",
     "Discount": "0",
     "Price": "0.5",
@@ -33,10 +33,171 @@
     "Name": "Finger Biscuit",
     "PictureUrl": "http://www.simsek.com.tr/img/simsek/urunler/1329.jpg",
     "Type": "Biscuits",
-    "Kind": "Food",
+    "Kind": "Foods",
     "Weight": "0.600",
     "Discount": "5",
     "Price": "1.50",
     "ManufacturerName": "Simsek"
+  },
+  {
+    "Name": "Coca-cola",
+    "PictureUrl": "https://www.aladinfoods.bg/files/images/737/Cola_500ml.png",
+    "Type": "Carbonated Drinks",
+    "Kind": "Drinks",
+    "Weight": "0.500",
+    "Discount": "0",
+    "Price": "1.20",
+    "ManufacturerName": "Coca Cola"
+  },
+  {
+    "Name": "Coca-cola",
+    "PictureUrl": "https://www.makro.co.za/Images/Products/Large/MIN_176437_SWA.jpg?v=20180904",
+    "Type": "Carbonated Drinks",
+    "Kind": "Drinks",
+    "Weight": "2",
+    "Discount": "5",
+    "Price": "2.00",
+    "ManufacturerName": "Coca Cola"
+  },
+  {
+    "Name": "Fanta Orange",
+    "PictureUrl": "https://cdn.shopify.com/s/files/1/1917/9885/products/Fanta-Orange-2L-Limited-to-8-bottles-per-person-5449000010049_1_345x@2x.jpg?v=1497993795",
+    "Type": "Carbonated Drinks",
+    "Kind": "Drinks",
+    "Weight": "2",
+    "Discount": "5",
+    "Price": "2.00",
+    "ManufacturerName": "Coca Cola"
+  },
+  {
+    "Name": "Fanta Orange",
+    "PictureUrl": "http://www.e-baqala.com/ps/14963/coca-cola-fanta-orange-330ml.jpg",
+    "Type": "Carbonated Drinks",
+    "Kind": "Drinks",
+    "Weight": "0.330",
+    "Discount": "5",
+    "Price": "1.00",
+    "ManufacturerName": "Coca Cola"
+  },
+  {
+    "Name": "Fanta Orange",
+    "PictureUrl": "https://jlbrooks.co.uk/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/d/-/d-fant-500.jpg",
+    "Type": "Carbonated Drinks",
+    "Kind": "Drinks",
+    "Weight": "0.5",
+    "Discount": "5",
+    "Price": "2.00",
+    "ManufacturerName": "Coca Cola"
+  },
+  {
+    "Name": "Lexus",
+    "PictureUrl": "https://i2.cdscdn.com/pdt2/7/9/5/1/700x700/auc2009842790795/rw/assortiment-chocolats-anl-choco-lexus-chocolat-a.jpg",
+    "Type": "Bonbons",
+    "Kind": "Foods",
+    "Weight": "2",
+    "Discount": "0",
+    "Price": "2.00",
+    "ManufacturerName": "ANL Choco"
+  },
+  {
+    "Name": "Lexus",
+    "PictureUrl": "https://images-na.ssl-images-amazon.com/images/I/41KI%2BypvseL._SR600%2C315_PIWhiteStrip%2CBottomLeft%2C0%2C35_SCLZZZZZZZ_.jpg",
+    "Type": "Bonbons",
+    "Kind": "Foods",
+    "Weight": "0.500",
+    "Discount": "0",
+    "Price": "1.00",
+    "ManufacturerName": "ANL Choco"
+  },
+  {
+    "Name": "Jellilo",
+    "PictureUrl": "http://www.sahagida.com/wp-content/uploads/2015/08/001jellilo-jelly-gummies-big.jpg",
+    "Type": "Jellilos",
+    "Kind": "Foods",
+    "Weight": "0.500",
+    "Discount": "0",
+    "Price": "1.50",
+    "ManufacturerName": "Sweet Saha"
+  },
+  {
+    "Name": "Pyramid",
+    "PictureUrl": "http://www.caglacikolata.com/wp-content/uploads/2016/09/PYRAMID-Strawberry-Flavour-740x740.jpg",
+    "Type": "Wafers",
+    "Kind": "Foods",
+    "Weight": "0.025",
+    "Discount": "0",
+    "Price": "0.50",
+    "ManufacturerName": "Chagla"
+  },
+
+  {
+    "Name": "Europa",
+    "PictureUrl": "http://www.caglacikolata.com/wp-content/uploads/2016/08/EUROPA-Candy-1-740x740.jpg",
+    "Type": "Wafers",
+    "Kind": "Foods",
+    "Weight": "0.025",
+    "Discount": "0",
+    "Price": "0.50",
+    "ManufacturerName": "Chagla"
+  },
+  {
+    "Name": "3in1",
+    "PictureUrl": "http://www.mahmoodcoffee.com/img/urunler/3in1.jpg",
+    "Type": "Coffee",
+    "Kind": "Foods",
+    "Weight": "0.025",
+    "Discount": "0",
+    "Price": "0.50",
+    "ManufacturerName": "Mahmood Coffee"
+  },
+  {
+    "Name": "Turkish Coffee",
+    "PictureUrl": "http://www.mahmoodcoffee.com/img/urunler/turkkahvesi.jpg",
+    "Type": "Coffee",
+    "Kind": "Foods",
+    "Weight": "0.1",
+    "Discount": "10",
+    "Price": "1.50",
+    "ManufacturerName": "Mahmood Coffee"
+  },
+  {
+    "Name": "Turbo",
+    "PictureUrl": "http://www.progum.com.tr/img/efsaneturbo.png",
+    "Type": "Gums",
+    "Kind": "Foods",
+    "Weight": "0.024",
+    "Discount": "10",
+    "Price": "1.50",
+    "ManufacturerName": "Progum"
+  },
+  {
+    "Name": "You & Me",
+    "PictureUrl": "http://www.progum.com.tr/img/sakiz16.png",
+    "Type": "Gums",
+    "Kind": "Foods",
+    "Weight": "0.024",
+    "Discount": "10",
+    "Price": "1.50",
+    "ManufacturerName": "Progum"
+  },
+  {
+    "Name": "Ops Chicken",
+    "PictureUrl": "http://www.mcrobin.com/En/img/chickenstick.jpg",
+    "Type": "Snacks",
+    "Kind": "Foods",
+    "Weight": "0.05",
+    "Discount": "10",
+    "Price": "0.3",
+    "ManufacturerName": "MC Robin"
+  },
+  {
+    "Name": "Ops Corn",
+    "PictureUrl": "http://www.mcrobin.com/En/img/corn.jpg",
+    "Type": "Snacks",
+    "Kind": "Foods",
+    "Weight": "0.016",
+    "Discount": "10",
+    "Price": "0.2",
+    "ManufacturerName": "MC Robin"
   }
 ]

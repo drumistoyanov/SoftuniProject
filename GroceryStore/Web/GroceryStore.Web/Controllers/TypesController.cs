@@ -12,19 +12,19 @@ namespace GroceryStore.Web.Controllers
 {
     public class TypesController: BaseController
     {
-        private readonly IProductsService productsService;
-        private readonly ITypesService typesService;
+        private readonly IProductsService _productsService;
+        private readonly ITypesService _typesService;
 
         public TypesController(IProductsService productsService,
             ITypesService typesService)
         {
-            this.productsService = productsService;
-            this.typesService = typesService;
+            this._productsService = productsService;
+            this._typesService = typesService;
         }
 
         public IActionResult Index(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetProducts(types,kind).ToList().Count;
+            var productsCount = this._typesService.GetProducts(types,kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -33,7 +33,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetProducts(types, kind)
+            var products = this._typesService.GetProducts(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind,page, maxPage, nameof(Index), products);
@@ -43,7 +43,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult TopSellers(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetTheMostSellableProducts(types, kind).ToList().Count;
+            var productsCount = this._typesService.GetTheMostSellableProducts(types, kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -52,7 +52,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetTheMostSellableProducts(types, kind)
+            var products = this._typesService.GetTheMostSellableProducts(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind, page, maxPage, nameof(TopSellers), products);
@@ -62,7 +62,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult PriceHighLow(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetProductsOrderByPriceDescending(types, kind).ToList().Count;
+            var productsCount = this._typesService.GetProductsOrderByPriceDescending(types, kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -71,7 +71,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetProductsOrderByPriceDescending(types, kind)
+            var products = this._typesService.GetProductsOrderByPriceDescending(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind, page, maxPage, nameof(PriceHighLow), products);
@@ -81,7 +81,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult PriceLowHigh(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetProductsOrderByPriceAscending(types, kind).ToList().Count;
+            var productsCount = this._typesService.GetProductsOrderByPriceAscending(types, kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -90,7 +90,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetProductsOrderByPriceAscending(types, kind)
+            var products = this._typesService.GetProductsOrderByPriceAscending(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind, page, maxPage, nameof(PriceLowHigh), products);
@@ -100,7 +100,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult DiscountHighLow(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetProductsOrderByDiscountDescending(types, kind).ToList().Count;
+            var productsCount = this._typesService.GetProductsOrderByDiscountDescending(types, kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -109,7 +109,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetProductsOrderByDiscountDescending(types, kind)
+            var products = this._typesService.GetProductsOrderByDiscountDescending(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind, page, maxPage, nameof(DiscountHighLow), products);
@@ -119,7 +119,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult DiscountLowHigh(string[] types, string kind, int page)
         {
-            var productsCount = this.typesService.GetProductsOrderByDiscountAscending(types, kind).ToList().Count;
+            var productsCount = this._typesService.GetProductsOrderByDiscountAscending(types, kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -128,7 +128,7 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.typesService.GetProductsOrderByDiscountAscending(types, kind)
+            var products = this._typesService.GetProductsOrderByDiscountAscending(types, kind)
                 .Skip(skip)
                 .Take(12);
             var model = this.CreateProductsModel(types, kind, page, maxPage, nameof(DiscountLowHigh), products);
@@ -164,14 +164,14 @@ namespace GroceryStore.Web.Controllers
 
         private IEnumerable<Manufacturer> GetAllManufacturers()
         {
-            var manufacturers = this.productsService.GetAllManufacturers();
+            var manufacturers = this._productsService.GetAllManufacturers();
 
             return manufacturers;
         }
 
         private IEnumerable<AllTypesViewModel> CreateTypesViewModel(string[] typesNames)
         {
-            var allTypes = this.productsService.GetAllTypes();
+            var allTypes = this._productsService.GetAllTypes();
 
             foreach(var type in allTypes)
             {

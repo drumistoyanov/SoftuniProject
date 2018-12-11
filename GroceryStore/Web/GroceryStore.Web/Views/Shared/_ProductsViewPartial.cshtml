@@ -10,6 +10,7 @@
     {
         break;
     }
+   
     <div class="card-group">
         @foreach (var product in productItems)
         {
@@ -20,10 +21,11 @@
 
                 <img class="card-image-top img-fluid img-thumbnail"
                      onerror="this.src='@product.PictureUrl'"
-                     src="@product.PictureUrl" height="200" width="200">
-
+                     src="@product.PictureUrl" height="250" width="300">
+               
                 <div class="card-body">
                     <h4 class="card-title">@product.Name</h4>
+                    <p class="card-text" ><strong>Weight</strong> - @product.Weight kg.</p>
                     @if (product.Discount > 0)
                     {
                         <p class="card-text"><strong>Discount</strong> - @product.Discount%</p>

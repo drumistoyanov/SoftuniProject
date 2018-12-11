@@ -6,6 +6,8 @@ namespace GroceryStore.Common.ViewModels
 {
     public class ManufacturerProductsViewModel
     {
+        public IEnumerable<AllTypesViewModel> Types { get; set; }
+
         public IEnumerable<Manufacturer> Manufacturers { get; set; }
 
         public ManufacturerDetailsViewModel ManufacturerWithProducts{ get; set; }

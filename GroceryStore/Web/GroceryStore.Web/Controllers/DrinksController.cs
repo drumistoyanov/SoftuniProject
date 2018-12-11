@@ -28,7 +28,7 @@ namespace GroceryStore.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index), ControllersConstants.Types,
-                new {types, kind = ControllersConstants.Drinks });
+                new {types=types, kind = ControllersConstants.Drinks });
         }
 
         public IActionResult PriceHighLow(int id)
