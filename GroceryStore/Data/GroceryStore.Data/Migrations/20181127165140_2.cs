@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Data.Migrations
-{
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+namespace GroceryStore.Data.Migrations
+{
     public partial class _2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

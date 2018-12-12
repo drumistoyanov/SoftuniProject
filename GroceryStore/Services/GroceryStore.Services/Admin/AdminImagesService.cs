@@ -17,37 +17,37 @@ namespace GroceryStore.Services.Admin
 
         public async Task<ImageBindingModel> GetImage(int id)
         {
-            var image= await this.DbContext.Images.FindAsync(id);
-            this.CheckIfImageExist(image);
+            var image= await DbContext.Images.FindAsync(id);
+            CheckIfImageExist(image);
 
-            return this.Mapper.Map<ImageBindingModel>(image);
+            return Mapper.Map<ImageBindingModel>(image);
         }
 
         public async Task SaveImage(ImageBindingModel model, int productId)
         {
-            var image = this.Mapper.Map<Image>(model);
+            var image = Mapper.Map<Image>(model);
             image.ProductId = productId;
-            await this.DbContext.Images.AddAsync(image);
-            await this.DbContext.SaveChangesAsync();
+            await DbContext.Images.AddAsync(image);
+            await DbContext.SaveChangesAsync();
         }
         
         public async Task EditProduct(int id, ImageBindingModel model)
         {
-            var image = await this.DbContext.Images.FindAsync(id);
-            this.CheckIfImageExist(image);
+            var image = await DbContext.Images.FindAsync(id);
+            CheckIfImageExist(image);
 
             image.Url = model.Url;
 
-            await this.DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task DeleteProduct(int id)
         {
-            var image = await this.DbContext.Images.FindAsync(id);
-            this.CheckIfImageExist(image);
+            var image = await DbContext.Images.FindAsync(id);
+            CheckIfImageExist(image);
 
-            this.DbContext.Remove(image);
-            await this.DbContext.SaveChangesAsync();
+            DbContext.Remove(image);
+            await DbContext.SaveChangesAsync();
         }
 
         private void CheckIfImageExist(Image image)

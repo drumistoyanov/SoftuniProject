@@ -7,7 +7,7 @@ namespace GroceryStore.Data.Models
     {
         public Order()
         {
-            this.OrderProducts=new HashSet<OrderProduct>();
+            OrderProducts=new HashSet<OrderProduct>();
         }
         public int Id { get; set; }
 

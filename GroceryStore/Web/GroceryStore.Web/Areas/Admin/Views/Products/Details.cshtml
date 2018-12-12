@@ -1,4 +1,4 @@
-﻿@model GroceryStore.Common.ViewModels.Admin.Products.ProductDetailsViewModel
+﻿@model ProductDetailsViewModel
 @{
     ViewData["Title"] = "Details";
     var newPrice = Math.Round(Model.Price - ((Model.Price * Model.Discount) / 100),2);

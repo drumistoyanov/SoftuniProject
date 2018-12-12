@@ -4,9 +4,9 @@ namespace GroceryStore.Services.ShopCart.Interfaces
 {
     public interface IShoppingCartManager
     {
-        void AddToCart(string id, int productId, int quantity, decimal weight);
+        void AddToCart(string id, int productId, int quantity);
             
-        void RemoveFromCart(string id,int productId, decimal weight);
+        void RemoveFromCart(string id,int productId);
 
         IEnumerable<CartItem> GetItems(string id);
 

@@ -1,9 +1,8 @@
-﻿namespace GroceryStore.Services.Messaging.SendGrid
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace GroceryStore.Services.Messaging.SendGrid
 {
-    using System.Collections.Generic;
-
-    using Newtonsoft.Json;
-
     public class SendGridPersonalization
     {
         [JsonProperty("to")]

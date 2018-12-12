@@ -6,44 +6,44 @@ namespace GroceryStore.Services.ShopCart
 {
     public class ShoppingCartManager :IShoppingCartManager
     {
-        private readonly ConcurrentDictionary<string, ShoppingCart> carts;
+        private readonly ConcurrentDictionary<string, ShoppingCart> _carts;
         
         public ShoppingCartManager() 
         {
-            this.carts = new ConcurrentDictionary<string, ShoppingCart>();
+            _carts = new ConcurrentDictionary<string, ShoppingCart>();
         }
 
-        public void AddToCart(string id, int productId, int quantity, decimal weight)
+        public void AddToCart(string id, int productId, int quantity)
         {
-            var shopingCart = this.GetShoppingCart(id);
+            var shoppingCart = GetShoppingCart(id);
 
-            shopingCart.AddToCart(productId, quantity,weight);
+            shoppingCart.AddToCart(productId, quantity);
         }
         
-        public void RemoveFromCart(string id, int productId, decimal weight)
+        public void RemoveFromCart(string id, int productId)
         {
-            var shopingCart = this.GetShoppingCart(id);
+            var shoppingCart = GetShoppingCart(id);
 
-            shopingCart.RemoveFromCart(productId,weight);
+            shoppingCart.RemoveFromCart(productId);
         }
 
         public void Clear(string id)
         {
-            this.GetShoppingCart(id).Clear();
+            GetShoppingCart(id).Clear();
         }
 
         public IEnumerable<CartItem> GetItems(string id)
         {
-            var shopingCart = this.GetShoppingCart(id);
+            var shoppingCart = GetShoppingCart(id);
             
-            var cartItems= new List<CartItem>(shopingCart.Items);
+            var cartItems= new List<CartItem>(shoppingCart.Items);
 
             return cartItems;
         }
         
         private ShoppingCart GetShoppingCart(string id)
         {
-            return this.carts.GetOrAdd(id, new ShoppingCart());
+            return _carts.GetOrAdd(id, new ShoppingCart());
         }
         
     }

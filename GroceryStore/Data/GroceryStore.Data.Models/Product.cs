@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Authentication.ExtendedProtection;
-
 
 namespace GroceryStore.Data.Models
 {
@@ -10,11 +7,10 @@ namespace GroceryStore.Data.Models
     {
         public Product()
         {
-            this.Images = new HashSet<Image>();
+            Images = new HashSet<Image>();
         }
 
         public int Id { get; set; }
-
 
         [Required]
         [MinLength(5)]

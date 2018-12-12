@@ -17,21 +17,21 @@ namespace GroceryStore.Services.Orders
         
         public  IEnumerable<UserOrdersViewModel> GetUserOrders(string userId)
         {
-            var userOrders = this.DbContext.Orders
+            var userOrders = DbContext.Orders
                 .Include(o => o.OrderProducts)
                 .Where(u => u.UserId == userId)
                 .ToList();
 
-            return this.Mapper.Map<IEnumerable<UserOrdersViewModel>>(userOrders);
+            return Mapper.Map<IEnumerable<UserOrdersViewModel>>(userOrders);
         }
 
         public IEnumerable<OrderProductsViewModel> GetOrderProducts(int orderId)
         {
-            var orderProducts = this.DbContext.OrderProducts
+            var orderProducts = DbContext.OrderProducts
                 .Where(o=>o.OrderId==orderId)
                 .ToList();
 
-            return this.Mapper.Map<IEnumerable<OrderProductsViewModel>>(orderProducts);
+            return Mapper.Map<IEnumerable<OrderProductsViewModel>>(orderProducts);
         }
     }
 }

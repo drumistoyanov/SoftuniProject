@@ -1,10 +1,10 @@
-﻿namespace GroceryStore.Data
-{
-    using System.Linq;
-    using GroceryStore.Data.Models;
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using GroceryStore.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
+namespace GroceryStore.Data
+{
     public class GroceryStoreDbContext : IdentityDbContext<User>
     {
         public GroceryStoreDbContext(DbContextOptions<GroceryStoreDbContext> options)
@@ -26,7 +26,7 @@
 
         public DbSet<OrderLog> OrderLogs { get; set; }
 
-        public override int SaveChanges() => this.SaveChanges(true);
+        public override int SaveChanges() => SaveChanges(true);
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

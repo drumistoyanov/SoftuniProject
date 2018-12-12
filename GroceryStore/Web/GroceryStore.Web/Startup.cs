@@ -45,7 +45,7 @@ namespace GroceryStore.Web
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            });         
 
             services.AddDbContext<GroceryStoreDbContext>(options =>
                 options.UseSqlServer(
@@ -75,7 +75,7 @@ namespace GroceryStore.Web
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.Password = new PasswordOptions()
+                options.Password = new PasswordOptions
                 {
                     RequiredLength = 4,
                     RequiredUniqueChars = 1,
@@ -87,12 +87,15 @@ namespace GroceryStore.Web
 
                 options.SignIn.RequireConfirmedEmail = false;
             });
-
+                
             services.AddAutoMapper();
 
             RegisterServiceLayer(services);
 
-            services.AddSession();
+            services.AddSession(opt =>
+            {
+                opt.Cookie.IsEssential = true;
+            });
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

@@ -1,20 +1,17 @@
 ﻿using System;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using GroceryStore.Web.Areas.Identity.Pages.Account.InputModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace GroceryStore.Web.Areas.Identity.Pages.Account
 {
-    using System.Text.Encodings.Web;
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-    using GroceryStore.Web.Areas.Identity.Pages.Account.InputModels;
-
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-
     [AllowAnonymous]
 #pragma warning disable SA1649 // File name should match first type name
     public class RegisterModel : PageModel
@@ -31,10 +28,10 @@ namespace GroceryStore.Web.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
-            this._logger = logger;
-            this._emailSender = emailSender;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -44,44 +41,44 @@ namespace GroceryStore.Web.Areas.Identity.Pages.Account
 
         public void OnGet(string returnUrl = null)
         {
-            this.ReturnUrl = returnUrl;
+            ReturnUrl = returnUrl;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? this.Url.Content("~/");
-            if (this.ModelState.IsValid)
+            returnUrl = returnUrl ?? Url.Content("~/");
+            if (ModelState.IsValid)
             {
-                var user = new User { UserName = this.Input.Username, Email = this.Input.Email,DateOfRegistration = DateTime.Now};             
-                var result = await this._userManager.CreateAsync(user, this.Input.Password);
+                var user = new User { UserName = Input.Username, Email = Input.Email,DateOfRegistration = DateTime.Now};             
+                var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    this._logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("User created a new account with password.");
 
-                    var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = this.Url.Page(
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { userId = user.Id, code },
-                        protocol: this.Request.Scheme);
+                        protocol: Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(
-                        this.Input.Email,
+                    await _emailSender.SendEmailAsync(
+                        Input.Email,
                         "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    await this._signInManager.SignInAsync(user, isPersistent: false);
-                    return this.LocalRedirect(returnUrl);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
                 }
 
                 foreach (var error in result.Errors)
                 {
-                    this.ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return this.Page();
+            return Page();
         }
     }
 }

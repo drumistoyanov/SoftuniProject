@@ -1,20 +1,17 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-
-    using Newtonsoft.Json;
-
 #pragma warning disable SA1649 // File name should match first type name
     public class DownloadPersonalDataModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
@@ -32,13 +29,13 @@
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            this.logger.LogInformation("User with ID '{UserId}' asked for their personal data.", this.userManager.GetUserId(this.User));
+            logger.LogInformation("User with ID '{UserId}' asked for their personal data.", userManager.GetUserId(User));
 
             // Only include personal data for download
             var personalData = new Dictionary<string, string>();
@@ -49,7 +46,7 @@
                 personalData.Add(p.Name, p.GetValue(user)?.ToString() ?? "null");
             }
 
-            this.Response.Headers.Add("Content-Disposition", "attachment; filename=PersonalData.json");
+            Response.Headers.Add("Content-Disposition", "attachment; filename=PersonalData.json");
             return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(personalData)), "text/json");
         }
     }

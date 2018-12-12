@@ -36,13 +36,13 @@
                             <li><partial name="_LoginPartial" /></li>
 
 
-                            @if (this.User.Identity.IsAuthenticated)
+                            @if (User.Identity.IsAuthenticated)
                             {
                                 <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-user"></i> My Account</a></li>
                                 <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items"><i class="fa fa-user"></i> My Cart</a></li>
                                 <li><a asp-area="" asp-page="/Orders/MyOrders"><i class="fa fa-user"></i> Checkout</a></li>
                             }
-                            @if (this.User.IsInRole("Administrator"))
+                            @if (User.IsInRole("Administrator"))
                             {
 
                                 <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs "></i>Users</a>

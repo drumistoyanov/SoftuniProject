@@ -1,10 +1,9 @@
-﻿namespace GroceryStore.Web.ViewModels.Manage
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+
+namespace GroceryStore.Web.ViewModels.Manage
 {
-    using System.Collections.Generic;
-
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Identity;
-
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

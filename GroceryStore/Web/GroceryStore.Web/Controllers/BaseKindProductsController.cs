@@ -4,7 +4,6 @@ using GroceryStore.Common.ViewModels;
 using GroceryStore.Common.ViewModels.Admin.Products;
 using GroceryStore.Data.Models;
 using GroceryStore.Services.Products.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryStore.Web.Controllers
 {
@@ -15,8 +14,8 @@ namespace GroceryStore.Web.Controllers
         protected BaseKindProductsController(
             IProductsService productsService, string controllerName)
         {
-            this._controllerName = controllerName;
-            this.ProductsService = productsService;
+            _controllerName = controllerName;
+            ProductsService = productsService;
         }
         
         protected IProductsService ProductsService { get; private set; }
@@ -24,7 +23,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel Index(int id,string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetProducts(kind).ToList().Count;
+            var productsCount = ProductsService.GetProducts(kind).ToList().Count;
             if (page <= 0 || page > productsCount)
             {
                 page = 1;
@@ -33,11 +32,11 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetProducts(kind)
+            var products = ProductsService.GetProducts(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(Index), products);
+            var model = CreateProductsModel(page, maxPage, nameof(Index), products);
 
             return model;
         }
@@ -45,7 +44,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel PriceHighLow(int id, string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetProductsOrderByPriceDescending(kind)
+            var productsCount = ProductsService.GetProductsOrderByPriceDescending(kind)
                 .ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -55,11 +54,11 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetProductsOrderByPriceDescending(kind)
+            var products = ProductsService.GetProductsOrderByPriceDescending(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(PriceHighLow), products);
+            var model = CreateProductsModel(page, maxPage, nameof(PriceHighLow), products);
 
             return model;
         }
@@ -67,7 +66,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel PriceLowHigh(int id, string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetProductsOrderByPriceAscending(kind)
+            var productsCount = ProductsService.GetProductsOrderByPriceAscending(kind)
                 .ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -77,11 +76,11 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetProductsOrderByPriceAscending(kind)
+            var products = ProductsService.GetProductsOrderByPriceAscending(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(PriceLowHigh), products);
+            var model = CreateProductsModel(page, maxPage, nameof(PriceLowHigh), products);
 
             return model;
         }
@@ -89,7 +88,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel DiscountHighLow(int id, string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetProductsOrderByDiscountDescending(kind)
+            var productsCount = ProductsService.GetProductsOrderByDiscountDescending(kind)
                 .ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -99,11 +98,11 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetProductsOrderByDiscountDescending(kind)
+            var products = ProductsService.GetProductsOrderByDiscountDescending(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(DiscountHighLow), products);
+            var model = CreateProductsModel(page, maxPage, nameof(DiscountHighLow), products);
 
             return model;
         }
@@ -111,7 +110,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel DiscountLowHigh(int id, string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetProductsOrderByDiscountAscending(kind)
+            var productsCount = ProductsService.GetProductsOrderByDiscountAscending(kind)
                 .ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -121,11 +120,11 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetProductsOrderByDiscountAscending(kind)
+            var products = ProductsService.GetProductsOrderByDiscountAscending(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(DiscountLowHigh), products);
+            var model = CreateProductsModel(page, maxPage, nameof(DiscountLowHigh), products);
 
             return model;
         }
@@ -133,7 +132,7 @@ namespace GroceryStore.Web.Controllers
         protected ProductsViewModel TopSellers(int id, string kind)
         {
             var page = id;
-            var productsCount = this.ProductsService.GetTheMostSellableProducts(kind)
+            var productsCount = ProductsService.GetTheMostSoldProducts(kind)
                 .ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -143,25 +142,25 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var products = this.ProductsService.GetTheMostSellableProducts(kind)
+            var products = ProductsService.GetTheMostSoldProducts(kind)
                 .Skip(skip)
                 .Take(12);
 
-            var model = this.CreateProductsModel(page, maxPage, nameof(TopSellers), products);
+            var model = CreateProductsModel(page, maxPage, nameof(TopSellers), products);
 
             return model;
         }
 
         private IEnumerable<Manufacturer> GetAllManufacturers()
         {
-            var manufacturers = this.ProductsService.GetAllManufacturers();
+            var manufacturers = ProductsService.GetAllManufacturers();
 
             return manufacturers;
         }
 
         private IEnumerable<AllTypesViewModel> GetAllTypes()
         {
-            var types = this.ProductsService.GetAllTypes();
+            var types = ProductsService.GetAllTypes();
 
             return types;
         }
@@ -169,7 +168,7 @@ namespace GroceryStore.Web.Controllers
         private ProductsViewModel CreateProductsModel(int currentPage, int maxPage,
            string actionName, IEnumerable<ProductIndexViewModel> products)
         {
-            var pageViewModel = new PagesViewModel()
+            var pageViewModel = new PagesViewModel
             {
                 CurrentPage = currentPage,
                 MaxPage = maxPage,
@@ -178,10 +177,10 @@ namespace GroceryStore.Web.Controllers
                 ControllerName = _controllerName
             };
 
-            var manufacturers = this.GetAllManufacturers();
-            var types = this.GetAllTypes();
+            var manufacturers = GetAllManufacturers();
+            var types = GetAllTypes();
 
-            return new ProductsViewModel()
+            return new ProductsViewModel
             {
                 Types=types,
                 Manufacturers = manufacturers,

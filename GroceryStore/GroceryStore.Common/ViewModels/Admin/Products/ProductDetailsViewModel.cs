@@ -1,6 +1,5 @@
-﻿using GroceryStore.Data.Models;
-using System.Collections.Generic;
-using System.Net.Mime;
+﻿using System.Collections.Generic;
+using GroceryStore.Data.Models;
 
 namespace GroceryStore.Common.ViewModels.Admin.Products
 {

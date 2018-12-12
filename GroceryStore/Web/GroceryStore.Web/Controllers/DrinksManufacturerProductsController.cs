@@ -16,35 +16,35 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult Index(int id, int page)
         {
-            var model = this.Index(id, page, ControllersConstants.Drinks);
+            var model = Index(id, page, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult PriceHighLow(int id, int page)
         {
-            var model = this.PriceHighLow(id, page, ControllersConstants.Drinks);
+            var model = PriceHighLow(id, page, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult PriceLowHigh(int id, int page)
         {
-            var model = this.PriceLowHigh(id, page, ControllersConstants.Drinks);
+            var model = PriceLowHigh(id, page, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult DiscountHighLow(int id, int page)
         {
-            var model = this.DiscountHighLow(id, page, ControllersConstants.Drinks);
+            var model = DiscountHighLow(id, page, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult DiscountLowHigh(int id, int page)
         {
-            var model = this.DiscountLowHigh(id, page, ControllersConstants.Drinks);
+            var model = DiscountLowHigh(id, page, ControllersConstants.Drinks);
 
             return View(model);
         }

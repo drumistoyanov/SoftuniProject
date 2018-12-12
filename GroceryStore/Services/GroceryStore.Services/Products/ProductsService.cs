@@ -19,7 +19,7 @@ namespace GroceryStore.Services.Products
 
         public IEnumerable<AllTypesViewModel> GetAllTypes()
         {
-            var brands = this.DbContext.Products
+            var brands = DbContext.Products
                 .Select(x => x.Type)
                 .ToHashSet();
 
@@ -40,72 +40,72 @@ namespace GroceryStore.Services.Products
 
         public IEnumerable<Manufacturer> GetAllManufacturers()
         {
-            var manufacturers = this.DbContext.Manufacturers.ToList();
+            var manufacturers = DbContext.Manufacturers.ToList();
 
             return manufacturers;
         }
 
         public IEnumerable<ProductIndexViewModel> GetProducts(string kind)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                 .Where(x=>x.Kind.ToString().ToLower()== kind.ToLower())
                 .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public IEnumerable<ProductIndexViewModel> GetProductsOrderByPriceDescending(string kind)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                 .Where(x => x.Kind.ToString().ToLower() == kind.ToLower())
                 .OrderByDescending(x => Math.Round(x.Price - ((x.Price * x.Discount) / 100)))
                 .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public IEnumerable<ProductIndexViewModel> GetProductsOrderByPriceAscending(string kind)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                  .Where(x => x.Kind.ToString().ToLower() == kind.ToLower())
                  .OrderBy(x => Math.Round(x.Price - ((x.Price * x.Discount) / 100)))
                  .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public IEnumerable<ProductIndexViewModel> GetProductsOrderByDiscountDescending(string kind)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                  .Where(x => x.Kind.ToString().ToLower() == kind.ToLower())
                  .OrderByDescending(x => x.Discount)
                  .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public IEnumerable<ProductIndexViewModel> GetProductsOrderByDiscountAscending(string kind)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                  .Where(x => x.Kind.ToString().ToLower() == kind.ToLower())
                  .OrderBy(x => x.Discount)
                  .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public IEnumerable<ProductIndexViewModel> GetProductsBySearchTerm(string searchTerm)
         {
-            var products = this.DbContext.Products
+            var products = DbContext.Products
                  .Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()))
                  .ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
-        public IEnumerable<ProductIndexViewModel> GetTheMostSellableProducts(string kind)
+        public IEnumerable<ProductIndexViewModel> GetTheMostSoldProducts(string kind)
         {
-            var orderProducts = this.DbContext.OrderProducts.ToList();
+            var orderProducts = DbContext.OrderProducts.ToList();
             var productsIdContsDic = new Dictionary<int, int>();
             foreach(var orderProduct in orderProducts)
             {
@@ -121,7 +121,7 @@ namespace GroceryStore.Services.Products
 
             foreach(var kvp in productsIdContsDic.OrderByDescending(x => x.Value))
             {
-                var product = this.DbContext.Products
+                var product = DbContext.Products
                     .SingleOrDefault(x => x.Id == kvp.Key && x.Kind.ToString() == kind);
 
                 if (product != null)
@@ -131,13 +131,13 @@ namespace GroceryStore.Services.Products
                 }
             }
 
-            var otherProducts = this.DbContext.Products
+            var otherProducts = DbContext.Products
                 .Where(x => x.Kind.ToString() == kind && !(orderedProductsIds.Contains(x.Id)))
                 .ToList();
 
             var products = ordederedProducts.Concat(otherProducts).ToList();
             
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
     }
 }

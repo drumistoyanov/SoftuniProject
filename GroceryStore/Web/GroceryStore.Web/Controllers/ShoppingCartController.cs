@@ -17,20 +17,17 @@ namespace GroceryStore.Web.Controllers
     [Authorize]
     public class ShoppingCartController : BaseController
     {
-        private readonly IShoppingCartManager shoppingCartManager;
-        private readonly GroceryStoreDbContext dbContext;
-        private readonly IMapper mapper;
-        private readonly UserManager<User> userManager;
+        private readonly IShoppingCartManager _shoppingCartManager;
+        private readonly GroceryStoreDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
 
         public ShoppingCartController(IShoppingCartManager shoppingCartManager,
             GroceryStoreDbContext dbContext,
-            IMapper mapper,
             UserManager<User> userManager)
         {
-            this.shoppingCartManager = shoppingCartManager;
-            this.dbContext = dbContext;
-            this.mapper = mapper;
-            this.userManager = userManager;
+            this._shoppingCartManager = shoppingCartManager;
+            this._dbContext = dbContext;
+            this._userManager = userManager;
         }
 
         public IActionResult Items()
@@ -49,12 +46,12 @@ namespace GroceryStore.Web.Controllers
             var shoppingCartId = this.GetStoppingCartId();
 
             var items = this.GetItemsModel(shoppingCartId);
-            var userId = this.userManager.GetUserId(User);
+            var userId = this._userManager.GetUserId(User);
             var order = new Order
             {
                 UserId = userId,
                 TotalPrice = items.Sum(x => x.Price * x.Quantity),
-                DateOfOrdering = DateTime.UtcNow
+                DateOfOrdering = DateTime.Now
             };
 
             foreach (var item in items)
@@ -67,30 +64,30 @@ namespace GroceryStore.Web.Controllers
                     ProductPicture = item.PictureUrl,
                     Quantity = item.Quantity,
                     ProductId = item.Id,
-                    ProductWeight = item.Weight,
+                    ProductWeight = item.Weight*item.Quantity,
                 });
             }
 
-            this.dbContext.Add(order);
-            this.dbContext.SaveChanges();
+            this._dbContext.Add(order);
+            this._dbContext.SaveChanges();
 
-            this.shoppingCartManager.Clear(shoppingCartId);
+            this._shoppingCartManager.Clear(shoppingCartId);
 
             return RedirectToPage(ControllersConstants.RedirectToOrdersSuccessful);
         }
 
-        public IActionResult AddToCart(int id, int quantity, decimal weight)
+        public IActionResult AddToCart(int id, int quantity)
         {
             var shoppingCartId = this.GetStoppingCartId();
-            this.shoppingCartManager.AddToCart(shoppingCartId, id, quantity, weight);
+            this._shoppingCartManager.AddToCart(shoppingCartId, id, quantity);
 
             return RedirectToAction(nameof(Items));
         }
 
-        public IActionResult RemoveFromCart(int id, decimal weight)
+        public IActionResult RemoveFromCart(int id)
         {
             var shoppingCartId = this.GetStoppingCartId();
-            this.shoppingCartManager.RemoveFromCart(shoppingCartId, id, weight);
+            this._shoppingCartManager.RemoveFromCart(shoppingCartId, id);
 
             return RedirectToAction(nameof(Items));
         }
@@ -110,28 +107,43 @@ namespace GroceryStore.Web.Controllers
 
         private List<ProductCartViewModel> GetItemsModel(string shoppingCartId)
         {
-            var cartItems = this.shoppingCartManager.GetItems(shoppingCartId).ToList();
+            var cartItems = this._shoppingCartManager.GetItems(shoppingCartId).ToList();
 
             var itemIds = cartItems.Select(i => i.ProductId);
 
             var products = new List<Product>();
 
+            var cartViewModels=new List<ProductCartViewModel>();
+
             foreach (var id in itemIds)
             {
-                var product = this.dbContext.Products.SingleOrDefault(x => x.Id == id);
+                var product = this._dbContext.Products.SingleOrDefault(x => x.Id == id);
                 products.Add(product);
             }
-
-            var model = this.mapper.Map<IEnumerable<ProductCartViewModel>>(products).ToList();
-
-            for (var i = 0; i < model.Count(); i++)
+            foreach (var product in products)
             {
-                model[i].Quantity = cartItems[i].Quantity;
-                model[i].Weight = cartItems[i].Weight;
-                model[i].Price = Math.Round(model[i].Price - ((model[i].Price * model[i].Discount) / 100), 2);
+                var model1 = new ProductCartViewModel()
+                {
+                    Discount = product.Discount,
+                    Id = product.Id,
+                    Name = product.Name,
+                    PictureUrl = product.PictureUrl,
+                    Price = product.Price,
+                    Quantity =0 ,
+                    Weight = product.Weight
+                };
+                cartViewModels.Add(model1);
             }
+            
+            for (int i = 0; i < cartViewModels.Count(); i++)
+            {
+                cartViewModels[i].Quantity = cartItems[i].Quantity;
+                cartViewModels[i].Weight = products[i].Weight*cartItems[i].Quantity;
+                cartViewModels[i].Price = Math.Round(cartViewModels[i].Price - ((cartViewModels[i].Price * cartViewModels[i].Discount) / 100), 2);
+            }
+          
 
-            return model;
+            return cartViewModels;
         }
     }
 }

@@ -1,18 +1,15 @@
-﻿namespace GroceryStore.Services.Messaging
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using GroceryStore.Services.Messaging.SendGrid;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+
+namespace GroceryStore.Services.Messaging
 {
-    using System;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using GroceryStore.Services.Messaging.SendGrid;
-
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.Extensions.Logging;
-
-    using Newtonsoft.Json;
-
     // Documentation: https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
     public class SendGridEmailSender : IEmailSender
     {
@@ -47,20 +44,20 @@
                 throw new ArgumentOutOfRangeException(nameof(fromName));
             }
 
-            this.logger = loggerFactory.CreateLogger<SendGridEmailSender>();
-            this.httpClient = new HttpClient();
-            this.httpClient.DefaultRequestHeaders.Authorization =
+            logger = loggerFactory.CreateLogger<SendGridEmailSender>();
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue(AuthenticationScheme, apiKey);
-            this.httpClient.BaseAddress = new Uri(BaseUrl);
+            httpClient.BaseAddress = new Uri(BaseUrl);
             this.fromAddress = fromAddress;
             this.fromName = fromName;
         }
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
-            if (string.IsNullOrWhiteSpace(this.fromAddress))
+            if (string.IsNullOrWhiteSpace(fromAddress))
             {
-                throw new ArgumentOutOfRangeException(nameof(this.fromAddress));
+                throw new ArgumentOutOfRangeException(nameof(fromAddress));
             }
 
             if (string.IsNullOrWhiteSpace(email))
@@ -76,12 +73,12 @@
             var msg = new SendGridMessage(
                 new SendGridEmail(email),
                 subject,
-                new SendGridEmail(this.fromAddress, this.fromName),
+                new SendGridEmail(fromAddress, fromName),
                 message);
             try
             {
                 var json = JsonConvert.SerializeObject(msg);
-                var response = await this.httpClient.PostAsync(
+                var response = await httpClient.PostAsync(
                     SendEmailUrlPath,
                     new StringContent(json, Encoding.UTF8, "application/json"));
 
@@ -95,7 +92,7 @@
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Exception during sending email: {ex}");
+                logger.LogError($"Exception during sending email: {ex}");
             }
         }
     }

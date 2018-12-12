@@ -1,13 +1,12 @@
-﻿@using GroceryStore.Common.ViewModels
-@model IEnumerable<GroceryStore.Common.ViewModels.Admin.Products.ProductIndexViewModel>
+﻿@model IEnumerable<ProductIndexViewModel>
 @{
-    var pagesViewModel = new PagesViewModel()
+    var pagesViewModel = new PagesViewModel
     {
         CurrentPage = (int)ViewData["CurrentPage"],
         MaxPage = (int)ViewData["PagesCount"],
         AreaName = "Admin",
         ControllerName ="Products",
-        ActionName = "Index",
+        ActionName = "Index"
 
     };
     ViewData["Title"] = "Index";

@@ -1,7 +1,6 @@
-﻿@using GroceryStore.Common.ViewModels
-@model IEnumerable<GroceryStore.Common.ViewModels.Admin.Manufacturers.ManufacturerIndexViewModel>
+﻿@model IEnumerable<ManufacturerIndexViewModel>
 @{
-    var pagesViewModel = new PagesViewModel()
+    var pagesViewModel = new PagesViewModel
     {
         CurrentPage = (int)ViewData["CurrentPage"],
         MaxPage = (int)ViewData["PagesCount"],

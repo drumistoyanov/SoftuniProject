@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Web.ViewModels.Manage
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace GroceryStore.Web.ViewModels.Manage
+{
     public class ChangePasswordViewModel
     {
         [Required]

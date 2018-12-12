@@ -20,7 +20,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         public IActionResult Index(int id)
         {
             var page = id;
-            var manufacturersCount = this.adminProductsService.GetProducts().ToList().Count;
+            var manufacturersCount = adminProductsService.GetProducts().ToList().Count;
             if (page <= 0 || page > manufacturersCount)
             {
                 page = 1;
@@ -29,7 +29,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
             ViewData[AdminConstants.CurrentPage] = page;
             var skip = (page - 1) * 6;
 
-            var model = this.adminProductsService.GetProducts()
+            var model = adminProductsService.GetProducts()
                 .Skip(skip)
                 .Take(6);
 
@@ -38,14 +38,14 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var model = await this.adminProductsService.GetDetails(id);
+            var model = await adminProductsService.GetDetails(id);
 
             return View(model);
         }
 
         public IActionResult Create()
         {
-            var model = this.adminProductsService.GetBindingModel();
+            var model = adminProductsService.GetBindingModel();
             return View(model);
         }
         
@@ -54,10 +54,10 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Create(ProductBindingModel model)
         {
-            await this.adminProductsService.SaveProduct(model);
+            await adminProductsService.SaveProduct(model);
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyAdd,
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyAdd,
                 AdminConstants.Product);
 
             return RedirectToAction(nameof(Index));
@@ -65,7 +65,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await this.adminProductsService.GetProduct(id);
+            var model = await adminProductsService.GetProduct(id);
             return View(model);
         }
 
@@ -74,10 +74,10 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Edit(int id, ProductBindingModel model)
         {
-            await this.adminProductsService.EditProduct(id, model);
+            await adminProductsService.EditProduct(id, model);
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
                 AdminConstants.Product);
 
             return RedirectToAction(AdminConstants.ActionDetails, new { id });
@@ -85,17 +85,17 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public IActionResult Delete(int id)
         {
-            this.ViewData[AdminConstants.ProductId] = id;
+            ViewData[AdminConstants.ProductId] = id;
 
             return View();
         }
 
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            await this.adminProductsService.DeleteProduct(id);
+            await adminProductsService.DeleteProduct(id);
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyDelete,
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyDelete,
                 AdminConstants.Product);
 
             return RedirectToAction(nameof(Index));

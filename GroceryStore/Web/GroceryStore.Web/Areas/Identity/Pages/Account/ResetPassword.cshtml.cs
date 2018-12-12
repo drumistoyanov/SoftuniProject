@@ -1,15 +1,13 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account
+﻿using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using GroceryStore.Web.Areas.Identity.Pages.Account.InputModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account
 {
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-    using GroceryStore.Web.Areas.Identity.Pages.Account.InputModels;
-
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-
     [AllowAnonymous]
 #pragma warning disable SA1649 // File name should match first type name
     public class ResetPasswordModel : PageModel
@@ -29,43 +27,43 @@
         {
             if (code == null)
             {
-                return this.BadRequest("A code must be supplied for password reset.");
+                return BadRequest("A code must be supplied for password reset.");
             }
 
-            this.Input = new ResetPasswordInputModel
+            Input = new ResetPasswordInputModel
             {
-                Code = code,
+                Code = code
             };
 
-            return this.Page();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.Page();
+                return Page();
             }
 
-            var user = await this.userManager.FindByEmailAsync(this.Input.Email);
+            var user = await userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return this.RedirectToPage("./ResetPasswordConfirmation");
+                return RedirectToPage("./ResetPasswordConfirmation");
             }
 
-            var result = await this.userManager.ResetPasswordAsync(user, this.Input.Code, this.Input.Password);
+            var result = await userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
             if (result.Succeeded)
             {
-                return this.RedirectToPage("./ResetPasswordConfirmation");
+                return RedirectToPage("./ResetPasswordConfirmation");
             }
 
             foreach (var error in result.Errors)
             {
-                this.ModelState.AddModelError(string.Empty, error.Description);
+                ModelState.AddModelError(string.Empty, error.Description);
             }
 
-            return this.Page();
+            return Page();
         }
     }
 }

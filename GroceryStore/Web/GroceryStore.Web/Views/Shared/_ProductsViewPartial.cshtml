@@ -43,7 +43,7 @@
                         Info
                     </a>
                     @{
-                        if (this.User.IsInRole("Administrator"))
+                        if (User.IsInRole("Administrator"))
                         {
                             <a class="btn btn-warning"
                                asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">

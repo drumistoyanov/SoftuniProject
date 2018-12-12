@@ -1,6 +1,4 @@
-﻿using GroceryStore.Data.Models;
-
-namespace GroceryStore.Common.SeedDtoModels
+﻿namespace GroceryStore.Common.SeedDtoModels
 {
     public class ProductDto
     {

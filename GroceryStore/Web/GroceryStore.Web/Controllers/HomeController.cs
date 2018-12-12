@@ -1,17 +1,16 @@
 ﻿using System.Diagnostics;
 using GroceryStore.Common.Constants;
 using GroceryStore.Services.Products.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryStore.Web.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-
     public class HomeController : BaseController
     {
 
         public IActionResult Contact()
         {
-            return this.View();
+            return View();
         }
      
         private readonly IProductsService productsService;
@@ -28,8 +27,8 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult Search(string searchTerm)
         {
-            this.ViewData[ControllersConstants.SearchResult] = searchTerm;
-            var model = this.productsService.GetProductsBySearchTerm(searchTerm);
+            ViewData[ControllersConstants.SearchResult] = searchTerm;
+            var model = productsService.GetProductsBySearchTerm(searchTerm);
 
             return View(model);
         }

@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
+{
     public class ForgotPasswordInputModel
     {
         [Required]

@@ -1,6 +1,6 @@
 ﻿@model TypesProductsViewModel
 @{
-    var typesSelectedModel = Model.Types.Where(x => x.IsChecked == true)
+    var typesSelectedModel = Model.Types.Where(x => x.IsChecked)
         .Select(x => x.Name)
         .ToList();
     var pageToAction = "1";

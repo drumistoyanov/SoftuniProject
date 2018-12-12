@@ -1,9 +1,8 @@
-﻿namespace GroceryStore.Web.ViewModels.Account
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace GroceryStore.Web.ViewModels.Account
 {
-    using System.Collections.Generic;
-
-    using Microsoft.AspNetCore.Mvc.Rendering;
-
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }

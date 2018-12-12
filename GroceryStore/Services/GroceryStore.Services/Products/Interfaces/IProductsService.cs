@@ -7,7 +7,7 @@ namespace GroceryStore.Services.Products.Interfaces
 {
     public interface IProductsService
     {
-        IEnumerable<ProductIndexViewModel> GetTheMostSellableProducts(string kind);
+        IEnumerable<ProductIndexViewModel> GetTheMostSoldProducts(string kind);
 
         IEnumerable<ProductIndexViewModel> GetProductsBySearchTerm(string searchTerm);
 

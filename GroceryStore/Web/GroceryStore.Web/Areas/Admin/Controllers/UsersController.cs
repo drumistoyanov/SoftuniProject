@@ -18,13 +18,13 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         
         public async Task<IActionResult> Index()
         {
-            var model = await this.adminUsersService.GetUsers(this.User);
+            var model = await adminUsersService.GetUsers(User);
             return View(model);
         }
         
         public async Task<IActionResult> Details(string id)
         {
-            var model = await this.adminUsersService.GetUserDatails(id);
+            var model = await adminUsersService.GetUserDatails(id);
             return View(model);
         }
         
@@ -41,41 +41,41 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
             var result = await adminUsersService.ChangeUserPassword(id, model);
             if (!result.Succeeded)
             {
-                return this.View();
+                return View();
             }
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = AdminConstants.PasswordChangeSuccessfully;
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = AdminConstants.PasswordChangeSuccessfully;
             return RedirectToAction(nameof(Index));
         }
         
         public IActionResult Ban(string id)
         {
-            this.ViewData[AdminConstants.UserId] = id;
-            return this.View();
+            ViewData[AdminConstants.UserId] = id;
+            return View();
         }
         
         public async Task<IActionResult> ConfirmBan(string id)
         {
-            await this.adminUsersService.BanUser(id);
+            await adminUsersService.BanUser(id);
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = AdminConstants.SuccessfullyBan;
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = AdminConstants.SuccessfullyBan;
 
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Delete(string id)
         {
-            this.ViewData[AdminConstants.UserId] = id;
-            return this.View();
+            ViewData[AdminConstants.UserId] = id;
+            return View();
         }
         
         public async Task<IActionResult> ConfirmDelete(string id)
         {
-            await this.adminUsersService.DeleteUser(id);
+            await adminUsersService.DeleteUser(id);
 
-            this.TempData[AdminConstants.MessageType] = AdminConstants.Success;
-            this.TempData[AdminConstants.Message] = AdminConstants.SuccessfullyDeleteUser;
+            TempData[AdminConstants.MessageType] = AdminConstants.Success;
+            TempData[AdminConstants.Message] = AdminConstants.SuccessfullyDeleteUser;
 
             return RedirectToAction(nameof(Index));
         }

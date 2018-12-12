@@ -1,16 +1,14 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
+﻿using System;
+using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using GroceryStore.Web.Areas.Identity.Pages.Account.Manage.InputModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System;
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-    using GroceryStore.Web.Areas.Identity.Pages.Account.Manage.InputModels;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-
 #pragma warning disable SA1649 // File name should match first type name
     public class DeletePersonalDataModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
@@ -36,46 +34,46 @@
 
         public async Task<IActionResult> OnGet()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            this.RequirePassword = await this.userManager.HasPasswordAsync(user);
-            return this.Page();
+            RequirePassword = await userManager.HasPasswordAsync(user);
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            this.RequirePassword = await this.userManager.HasPasswordAsync(user);
-            if (this.RequirePassword)
+            RequirePassword = await userManager.HasPasswordAsync(user);
+            if (RequirePassword)
             {
-                if (!await this.userManager.CheckPasswordAsync(user, this.Input.Password))
+                if (!await userManager.CheckPasswordAsync(user, Input.Password))
                 {
-                    this.ModelState.AddModelError(string.Empty, "Password not correct.");
-                    return this.Page();
+                    ModelState.AddModelError(string.Empty, "Password not correct.");
+                    return Page();
                 }
             }
 
-            var result = await this.userManager.DeleteAsync(user);
-            var userId = await this.userManager.GetUserIdAsync(user);
+            var result = await userManager.DeleteAsync(user);
+            var userId = await userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Unexpected error occurred deleteing user with ID '{userId}'.");
             }
 
-            await this.signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
 
-            this.logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
+            logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
 
-            return this.Redirect("~/");
+            return Redirect("~/");
         }
     }
 }

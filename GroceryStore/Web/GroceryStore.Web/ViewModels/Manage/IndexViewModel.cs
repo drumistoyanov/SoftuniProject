@@ -1,9 +1,8 @@
-﻿namespace GroceryStore.Web.ViewModels.Manage
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+
+namespace GroceryStore.Web.ViewModels.Manage
 {
-    using System.Collections.Generic;
-
-    using Microsoft.AspNetCore.Identity;
-
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }

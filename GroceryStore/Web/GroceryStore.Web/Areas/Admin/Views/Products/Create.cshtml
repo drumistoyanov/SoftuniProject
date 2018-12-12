@@ -1,12 +1,10 @@
-﻿@using GroceryStore.Data.Models
-@using GroceryStore.Web.Infrastructure.Helpers
-@model GroceryStore.Common.BindingModels.Admin.Products.ProductBindingModel
+﻿@model ProductBindingModel
 @{
     var manufacturers = Model.Manufacturers as IEnumerable<Manufacturer>;
     IEnumerable<SelectListItem> manufacturersSelectList = null;
     if (manufacturers != null)
     {
-        manufacturersSelectList = manufacturers.Select(t => new SelectListItem() { Text = t.Name, Value = t.Id.ToString() });
+        manufacturersSelectList = manufacturers.Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() });
     }
     ViewData["Title"] = "Create";
 }

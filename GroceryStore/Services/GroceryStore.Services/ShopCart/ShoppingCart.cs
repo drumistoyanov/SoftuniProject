@@ -5,28 +5,27 @@ namespace GroceryStore.Services.ShopCart
 {
     public class ShoppingCart
     {
-        private readonly IList<CartItem> items;
+        private readonly IList<CartItem> _items;
         
         public ShoppingCart()
         {
-            this.items = new List<CartItem>();
+            _items = new List<CartItem>();
         }
         
-        public IEnumerable<CartItem> Items => new List<CartItem>(this.items);
+        public IEnumerable<CartItem> Items => new List<CartItem>(_items);
 
-        public void AddToCart(int productId,int quantity,decimal weight)
+        public void AddToCart(int productId,int quantity)
         {
-            var cartItem = this.items.SingleOrDefault(x => x.ProductId == productId && x.Weight==weight);
+            var cartItem = _items.SingleOrDefault(x => x.ProductId == productId);
             if (cartItem == null)
             {
-                cartItem = new CartItem()
+                cartItem = new CartItem
                 {
                     ProductId = productId,
-                    Quantity = quantity,
-                    Weight= weight
+                    Quantity = quantity
                 };
 
-                this.items.Add(cartItem);
+                _items.Add(cartItem);
             }
             else
             {
@@ -34,24 +33,24 @@ namespace GroceryStore.Services.ShopCart
             }
         }
 
-        public void RemoveFromCart(int productId,decimal weight)
+        public void RemoveFromCart(int productId)
         {
-            var cartItem = this.items
-                .FirstOrDefault(x => x.ProductId == productId && x.Weight==weight);
+            var cartItem = _items
+                .FirstOrDefault(x => x.ProductId == productId);
 
             if (cartItem != null)
             {
                 cartItem.Quantity--;
                 if (cartItem.Quantity <= 0)
                 {
-                    this.items.Remove(cartItem);
+                    _items.Remove(cartItem);
                 }
             }
         }
 
         public void Clear()
         {
-            this.items.Clear();
+            _items.Clear();
         }
     }
 }

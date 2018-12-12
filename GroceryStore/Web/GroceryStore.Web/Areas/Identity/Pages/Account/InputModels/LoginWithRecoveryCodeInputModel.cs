@@ -1,9 +1,8 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.InputModels
 {
-    using System.ComponentModel.DataAnnotations;
-
-    using Microsoft.AspNetCore.Mvc;
-
     public class LoginWithRecoveryCodeInputModel
     {
         [BindProperty]

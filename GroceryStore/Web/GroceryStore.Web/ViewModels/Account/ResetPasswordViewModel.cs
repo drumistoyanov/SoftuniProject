@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Web.ViewModels.Account
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace GroceryStore.Web.ViewModels.Account
+{
     public class ResetPasswordViewModel
     {
         [Required]

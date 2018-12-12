@@ -9,46 +9,46 @@ using GroceryStore.Common.ViewModels.Orders;
 using GroceryStore.Common.ViewModels.ShoppingCart;
 using GroceryStore.Data.Models;
 
-namespace GroceryStore.Web.Mapping
+namespace GroceryStore.Common.Mapping
 {
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            this.CreateMap<User, UserIndexViewModel>();
+            CreateMap<User, UserIndexViewModel>();
 
-            this.CreateMap<User, UserDetailsViewModel>()
+            CreateMap<User, UserDetailsViewModel>()
                 .ForMember(dto => dto.Orders, dest => dest.MapFrom(o => o.Orders));
 
-            this.CreateMap<Manufacturer, ManufacturerIndexViewModel>()
+            CreateMap<Manufacturer, ManufacturerIndexViewModel>()
                 .ForMember(dto => dto.ProductsCount, dest => dest.MapFrom(p => p.Products.Count));
 
-            this.CreateMap<Manufacturer, ManufacturerDetailsViewModel>();
+            CreateMap<Manufacturer, ManufacturerDetailsViewModel>();
 
-            this.CreateMap<ManufacturerBindingModel, Manufacturer>();
+            CreateMap<ManufacturerBindingModel, Manufacturer>();
 
-            this.CreateMap<Manufacturer, ManufacturerBindingModel>();
+            CreateMap<Manufacturer, ManufacturerBindingModel>();
 
-            this.CreateMap<Product, ProductIndexViewModel>();
+            CreateMap<Product, ProductIndexViewModel>();
 
-            this.CreateMap<ProductBindingModel, Product>();
+            CreateMap<ProductBindingModel, Product>();
 
-            this.CreateMap<Product, ProductBindingModel>();
+            CreateMap<Product, ProductBindingModel>();
 
-            this.CreateMap<Product, ProductDetailsViewModel>()
+            CreateMap<Product, ProductDetailsViewModel>()
                 .ForMember(dto => dto.Manufacturer, dest => dest.MapFrom(t => t.Manufacturer))
                 .ForMember(dto => dto.Images, dest => dest.MapFrom(im => im.Images));
 
-            this.CreateMap<ImageBindingModel, Image>();
+            CreateMap<ImageBindingModel, Image>();
 
-            this.CreateMap<Image, ImageBindingModel>();
+            CreateMap<Image, ImageBindingModel>();
 
-            this.CreateMap<Product, ProductCartViewModel>();
+            CreateMap<Product, ProductCartViewModel>();
 
-            this.CreateMap<Order, UserOrdersViewModel>()
+            CreateMap<Order, UserOrdersViewModel>()
                 .ForMember(dto => dto.OrderProductsCount, dest => dest.MapFrom(op => op.OrderProducts.Count));
 
-            this.CreateMap<OrderProduct, OrderProductsViewModel>();
+            CreateMap<OrderProduct, OrderProductsViewModel>();
         }
     }
 }

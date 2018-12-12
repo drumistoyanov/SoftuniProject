@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GroceryStore.Common.ViewModels.Admin.Products.ProductIndexViewModel>
+﻿@model IEnumerable<ProductIndexViewModel>
 @{
     var skip = 0;
 }
@@ -42,7 +42,7 @@
                             Details
                         </a>
                         @{
-                            if (this.User.IsInRole("Administrator"))
+                            if (User.IsInRole("Administrator"))
                             {
                                 <a class="btn btn-warning"
                                    asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">

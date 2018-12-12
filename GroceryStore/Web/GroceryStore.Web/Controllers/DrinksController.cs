@@ -14,7 +14,7 @@ namespace GroceryStore.Web.Controllers
 
         public IActionResult Index(int id)
         {
-            var model = this.Index(id, ControllersConstants.Drinks);
+            var model = Index(id, ControllersConstants.Drinks);
 
             return View(model);
         }
@@ -28,40 +28,40 @@ namespace GroceryStore.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index), ControllersConstants.Types,
-                new {types=types, kind = ControllersConstants.Drinks });
+                new {types, kind = ControllersConstants.Drinks });
         }
 
         public IActionResult PriceHighLow(int id)
         {
-            var model = this.PriceHighLow(id, ControllersConstants.Drinks);
+            var model = PriceHighLow(id, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult PriceLowHigh(int id)
         {
-            var model = this.PriceLowHigh(id, ControllersConstants.Drinks);
+            var model = PriceLowHigh(id, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult DiscountHighLow(int id)
         {
-            var model = this.DiscountHighLow(id, ControllersConstants.Drinks);
+            var model = DiscountHighLow(id, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult DiscountLowHigh(int id)
         {
-            var model = this.DiscountLowHigh(id, ControllersConstants.Drinks);
+            var model = DiscountLowHigh(id, ControllersConstants.Drinks);
 
             return View(model);
         }
 
         public IActionResult TopSellers(int id)
         {
-            var model = this.TopSellers(id, ControllersConstants.Drinks);
+            var model = TopSellers(id, ControllersConstants.Drinks);
 
             return View(model);
         }

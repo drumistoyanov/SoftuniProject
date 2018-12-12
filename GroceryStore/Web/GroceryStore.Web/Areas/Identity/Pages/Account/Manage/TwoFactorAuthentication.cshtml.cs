@@ -1,14 +1,12 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
+﻿using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-
 #pragma warning disable SA1649 // File name should match first type name
     public class TwoFactorAuthenticationModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
@@ -43,32 +41,32 @@
 
         public async Task<IActionResult> OnGet()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            this.HasAuthenticator = await this.userManager.GetAuthenticatorKeyAsync(user) != null;
-            this.Is2FaEnabled = await this.userManager.GetTwoFactorEnabledAsync(user);
-            this.IsMachineRemembered = await this.signInManager.IsTwoFactorClientRememberedAsync(user);
-            this.RecoveryCodesLeft = await this.userManager.CountRecoveryCodesAsync(user);
+            HasAuthenticator = await userManager.GetAuthenticatorKeyAsync(user) != null;
+            Is2FaEnabled = await userManager.GetTwoFactorEnabledAsync(user);
+            IsMachineRemembered = await signInManager.IsTwoFactorClientRememberedAsync(user);
+            RecoveryCodesLeft = await userManager.CountRecoveryCodesAsync(user);
 
-            return this.Page();
+            return Page();
         }
 
         public async Task<IActionResult> OnPost()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            await this.signInManager.ForgetTwoFactorClientAsync();
-            this.StatusMessage =
+            await signInManager.ForgetTwoFactorClientAsync();
+            StatusMessage =
                 "The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code.";
-            return this.RedirectToPage();
+            return RedirectToPage();
         }
     }
 }

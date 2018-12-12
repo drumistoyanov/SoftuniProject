@@ -6,15 +6,15 @@
 
         public void Increase()
         {
-            this.Number++;
+            Number++;
         }
 
         public void Decrease()
         {
-            this.Number--;
-            if (this.Number <= 0)
+            Number--;
+            if (Number <= 0)
             {
-                this.Number = 1;
+                Number = 1;
             }
         }
     }

@@ -1,8 +1,8 @@
-﻿namespace GroceryStore.Web
-{
-    using Microsoft.AspNetCore;
-    using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 
+namespace GroceryStore.Web
+{
     public static class Program
     {
         public static void Main(string[] args)

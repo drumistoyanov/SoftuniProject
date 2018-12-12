@@ -1,18 +1,18 @@
-﻿namespace GroceryStore.Data.Seeding
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Security.Claims;
-    using GroceryStore.Common.Constants.AreaAdmin;
-    using GroceryStore.Common.SeedDtoModels;
-    using GroceryStore.Data.Models;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
-    using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Claims;
+using GroceryStore.Common.Constants.AreaAdmin;
+using GroceryStore.Common.SeedDtoModels;
+using GroceryStore.Data.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
+namespace GroceryStore.Data.Seeding
+{
     public static class ApplicationDbContextSeeder
     {
         public static async void SeedDatabase(this IApplicationBuilder app)
@@ -35,7 +35,7 @@
                 var user = await userManager.FindByNameAsync(AdminConstants.Admin);
                 if (user == null)
                 {
-                    user = new User()
+                    user = new User
                     {
                         UserName = AdminConstants.Admin,
                         Email = AdminConstants.AdminEmail,
@@ -81,7 +81,7 @@
                 .Select(t => new Manufacturer
                 {
                     Name = t.Name,
-                    LogoUrl = t.LogoUrl,
+                    LogoUrl = t.LogoUrl
                 })
                 .ToArray();
 
@@ -108,7 +108,7 @@
                         Kind = productDto.Kind,
                         Type = productDto.Type,
                         Weight = productDto.Weight,
-                        ManufacturerId = manufacturerId,
+                        ManufacturerId = manufacturerId
                     };
 
                     productsToCreate.Add(product);

@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Services.Messaging.SendGrid
-{
-    using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
+namespace GroceryStore.Services.Messaging.SendGrid
+{
     public class SendGridContent
     {
         public SendGridContent()
@@ -10,8 +10,8 @@
 
         public SendGridContent(string type, string content)
         {
-            this.Type = type;
-            this.Value = content;
+            Type = type;
+            Value = content;
         }
 
         [JsonProperty("type")]

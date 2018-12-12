@@ -1,9 +1,9 @@
-﻿namespace GroceryStore.Data.Migrations
-{
-    using System;
-    using Microsoft.EntityFrameworkCore.Metadata;
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
+namespace GroceryStore.Data.Migrations
+{
     public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

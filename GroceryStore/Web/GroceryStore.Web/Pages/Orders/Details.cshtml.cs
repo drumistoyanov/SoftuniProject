@@ -9,18 +9,18 @@ namespace GroceryStore.Web.Pages.Orders
     [Authorize]
     public class DetailsModel : PageModel
     {
-        private readonly IOrdersService ordersService;
+        private readonly IOrdersService _ordersService;
 
         public DetailsModel(IOrdersService ordersService)
         {
-            this.ordersService = ordersService;
+            this._ordersService = ordersService;
         }
 
         public IEnumerable<OrderProductsViewModel> ViewModel { get; set; }
 
         public void OnGet(int id)
         {
-            this.ViewModel = this.ordersService.GetOrderProducts(id);
+            ViewModel = _ordersService.GetOrderProducts(id);
         }
     }
 }

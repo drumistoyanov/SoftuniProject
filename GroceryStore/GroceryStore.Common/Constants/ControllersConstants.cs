@@ -2,7 +2,7 @@
 {
     public static class ControllersConstants
     {
-        public const string ShoppingCartId = "Shopping_Cart_Id";
+        public const string ShoppingCartId = "ShoppingCartId";
 
         public const string RedirectToOrdersSuccessful = "/Orders/Successful";
 

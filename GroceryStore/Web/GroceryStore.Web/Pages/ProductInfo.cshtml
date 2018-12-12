@@ -39,11 +39,11 @@
             <form method="get">
                 <span><strong>Quantity: </strong></span>
                 <a class="btn btn-default"
-                   asp-page-handler="DecreaseCount" asp-route-id="@this.RouteData.Values["id"]">
+                   asp-page-handler="DecreaseCount" asp-route-id="@RouteData.Values["id"]">
                     <i style="font-size: 23px;" class="fas fa-minus"></i>
                 </a>
                 <label> @Model.Quantity </label>
-                <a class="btn btn-default" asp-page-handler="IncreaseCount" asp-route-id="@this.RouteData.Values["id"]">
+                <a class="btn btn-default" asp-page-handler="IncreaseCount" asp-route-id="@RouteData.Values["id"]">
                     <i style="font-size: 23px;" class="fas fa-plus"></i>
                 </a>
             </form>

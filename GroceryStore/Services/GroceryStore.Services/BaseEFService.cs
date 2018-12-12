@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using GroceryStore.Data;
 
 namespace GroceryStore.Services
@@ -12,8 +9,8 @@ namespace GroceryStore.Services
             GroceryStoreDbContext dbContext,
             IMapper mapper)
         {
-            this.DbContext = dbContext;
-            this.Mapper = mapper;
+            DbContext = dbContext;
+            Mapper = mapper;
         }
 
         protected GroceryStoreDbContext DbContext { get; private set; }

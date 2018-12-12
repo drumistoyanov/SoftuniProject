@@ -1,9 +1,9 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
+﻿using System;
+using System.IO;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System;
-
-    using Microsoft.AspNetCore.Mvc.Rendering;
-
     public static class ManageNavPages
     {
         public static string Index => "Index";
@@ -37,7 +37,7 @@
         public static string PageNavClass(ViewContext viewContext, string page)
         {
             var activePage = viewContext.ViewData["ActivePage"] as string
-                ?? System.IO.Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);
+                ?? Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);
             return string.Equals(activePage, page, StringComparison.OrdinalIgnoreCase) ? "active" : null;
         }
     }

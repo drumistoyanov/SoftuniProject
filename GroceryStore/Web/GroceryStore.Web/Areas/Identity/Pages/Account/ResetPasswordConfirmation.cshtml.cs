@@ -1,8 +1,8 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account
-{
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
+namespace GroceryStore.Web.Areas.Identity.Pages.Account
+{
     [AllowAnonymous]
 #pragma warning disable SA1649 // File name should match first type name
     public class ResetPasswordConfirmationModel : PageModel

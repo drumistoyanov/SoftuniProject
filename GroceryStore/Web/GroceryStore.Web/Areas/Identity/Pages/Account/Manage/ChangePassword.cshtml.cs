@@ -1,15 +1,13 @@
-﻿namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
+﻿using System.Threading.Tasks;
+using GroceryStore.Data.Models;
+using GroceryStore.Web.Areas.Identity.Pages.Account.Manage.InputModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+
+namespace GroceryStore.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System.Threading.Tasks;
-
-    using GroceryStore.Data.Models;
-    using GroceryStore.Web.Areas.Identity.Pages.Account.Manage.InputModels;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-
 #pragma warning disable SA1649 // File name should match first type name
     public class ChangePasswordModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
@@ -36,50 +34,50 @@
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            var hasPassword = await this.userManager.HasPasswordAsync(user);
+            var hasPassword = await userManager.HasPasswordAsync(user);
             if (!hasPassword)
             {
-                return this.RedirectToPage("./SetPassword");
+                return RedirectToPage("./SetPassword");
             }
 
-            return this.Page();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.Page();
+                return Page();
             }
 
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            var changePasswordResult = await this.userManager.ChangePasswordAsync(user, this.Input.OldPassword, this.Input.NewPassword);
+            var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)
                 {
-                    this.ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
 
-                return this.Page();
+                return Page();
             }
 
-            await this.signInManager.RefreshSignInAsync(user);
-            this.logger.LogInformation("User changed their password successfully.");
-            this.StatusMessage = "Your password has been changed.";
+            await signInManager.RefreshSignInAsync(user);
+            logger.LogInformation("User changed their password successfully.");
+            StatusMessage = "Your password has been changed.";
 
-            return this.RedirectToPage();
+            return RedirectToPage();
         }
     }
 }

@@ -7,7 +7,7 @@
     <div class="dropdown-menu">
         @foreach (var manufacturer in Model)
         {
-            <a class="dropdown-item" asp-area="" asp-controller="@this.ViewData["ControllerName"]" asp-action="Index" asp-route-id="@manufacturer.Id">
+            <a class="dropdown-item" asp-area="" asp-controller="@ViewData["ControllerName"]" asp-action="Index" asp-route-id="@manufacturer.Id">
                 @manufacturer.Name 
                 <img src="@manufacturer.LogoUrl" alt="@manufacturer.Name" width="30" height="30" />
             </a>

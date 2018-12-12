@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GroceryStore.Data.Models
@@ -8,7 +7,7 @@ namespace GroceryStore.Data.Models
     {
         public Manufacturer()
         {
-            this.Products=new HashSet<Product>();
+            Products=new HashSet<Product>();
 
         }
         public int Id { get; set; }

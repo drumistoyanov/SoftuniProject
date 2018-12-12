@@ -5,7 +5,6 @@ using GroceryStore.Common.ViewModels.Admin.Manufacturers;
 using GroceryStore.Data.Models;
 using GroceryStore.Services.ManufacturersProducts.Interfaces;
 using GroceryStore.Services.Products.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryStore.Web.Controllers
 {
@@ -19,8 +18,8 @@ namespace GroceryStore.Web.Controllers
             string controllerName)
         {
             this.controllerName = controllerName;
-            this.ManufacturerProductsServices = manufacturerProductsServices;
-            this.ProductsService = productsService;
+            ManufacturerProductsServices = manufacturerProductsServices;
+            ProductsService = productsService;
         }
 
         protected IProductsService ProductsService { get; private set; }
@@ -29,8 +28,8 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel Index(int id, int page,string kind)
         {
-            var manufacturers = this.GetAllManufacturers();
-            var productsCount = this.ManufacturerProductsServices.GetManufacturerWithProducts(id, kind)
+            var manufacturers = GetAllManufacturers();
+            var productsCount = ManufacturerProductsServices.GetManufacturerWithProducts(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -40,21 +39,21 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var manufacturerWithProducts = this.ManufacturerProductsServices.GetManufacturerWithProducts(id, kind);
+            var manufacturerWithProducts = ManufacturerProductsServices.GetManufacturerWithProducts(id, kind);
             manufacturerWithProducts.Products = manufacturerWithProducts.Products
                 .Skip(skip)
                 .Take(12)
                 .ToList();
 
-            var model = this.ManufacturerProductsViewModel(id, page, maxPage, nameof(Index), manufacturerWithProducts);
+            var model = ManufacturerProductsViewModel(id, page, maxPage, nameof(Index), manufacturerWithProducts);
 
             return model;
         }
 
         protected ManufacturerProductsViewModel PriceHighLow(int id, int page, string kind)
         {
-            var manufacturers = this.GetAllManufacturers();
-            var productsCount = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceDescending(id, kind)
+            var manufacturers = GetAllManufacturers();
+            var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceDescending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -64,21 +63,21 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var manufacturerWithProducts = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceDescending(id, kind);
+            var manufacturerWithProducts = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceDescending(id, kind);
             manufacturerWithProducts.Products = manufacturerWithProducts.Products
                 .Skip(skip)
                 .Take(12)
                 .ToList();
 
-            var model = this.ManufacturerProductsViewModel(id, page, maxPage, nameof(PriceHighLow), manufacturerWithProducts);
+            var model = ManufacturerProductsViewModel(id, page, maxPage, nameof(PriceHighLow), manufacturerWithProducts);
 
             return model;
         }
 
         protected ManufacturerProductsViewModel PriceLowHigh(int id, int page, string kind)
         {
-            var manufacturers = this.GetAllManufacturers();
-            var productsCount = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceAscending(id, kind)
+            var manufacturers = GetAllManufacturers();
+            var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceAscending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -88,21 +87,21 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var manufacturerWithProducts = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceAscending(id, kind);
+            var manufacturerWithProducts = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceAscending(id, kind);
             manufacturerWithProducts.Products = manufacturerWithProducts.Products
                 .Skip(skip)
                 .Take(12)
                 .ToList();
 
-            var model = this.ManufacturerProductsViewModel(id, page, maxPage, nameof(PriceLowHigh), manufacturerWithProducts);
+            var model = ManufacturerProductsViewModel(id, page, maxPage, nameof(PriceLowHigh), manufacturerWithProducts);
 
             return model;
         }
 
         protected ManufacturerProductsViewModel DiscountHighLow(int id, int page, string kind)
         {
-            var manufacturers = this.GetAllManufacturers();
-            var productsCount = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountDescending(id, kind)
+            var manufacturers = GetAllManufacturers();
+            var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountDescending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -112,21 +111,21 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var manufacturerWithProducts = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountDescending(id, kind);
+            var manufacturerWithProducts = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountDescending(id, kind);
             manufacturerWithProducts.Products = manufacturerWithProducts.Products
                 .Skip(skip)
                 .Take(12)
                 .ToList();
 
-            var model = this.ManufacturerProductsViewModel(id, page, maxPage, nameof(DiscountHighLow), manufacturerWithProducts);
+            var model = ManufacturerProductsViewModel(id, page, maxPage, nameof(DiscountHighLow), manufacturerWithProducts);
 
             return model;
         }
 
         protected ManufacturerProductsViewModel DiscountLowHigh(int id, int page, string kind)
         {
-            var manufacturers = this.GetAllManufacturers();
-            var productsCount = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountAscending(id, kind)
+            var manufacturers = GetAllManufacturers();
+            var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountAscending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -136,20 +135,20 @@ namespace GroceryStore.Web.Controllers
 
             var skip = (page - 1) * 12;
 
-            var manufacturerWithProducts = this.ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountAscending(id, kind);
+            var manufacturerWithProducts = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountAscending(id, kind);
             manufacturerWithProducts.Products = manufacturerWithProducts.Products
                 .Skip(skip)
                 .Take(12)
                 .ToList();
 
-            var model = this.ManufacturerProductsViewModel(id, page, maxPage, nameof(DiscountLowHigh), manufacturerWithProducts);
+            var model = ManufacturerProductsViewModel(id, page, maxPage, nameof(DiscountLowHigh), manufacturerWithProducts);
 
             return model;
         }
         
         private IEnumerable<Manufacturer> GetAllManufacturers()
         {
-            var manufacturers = this.ProductsService.GetAllManufacturers();
+            var manufacturers = ProductsService.GetAllManufacturers();
 
             return manufacturers;
         }
@@ -157,19 +156,19 @@ namespace GroceryStore.Web.Controllers
         private ManufacturerProductsViewModel ManufacturerProductsViewModel(int id, int currentPage, int maxPage,
             string actionName, ManufacturerDetailsViewModel manufacturerDetailsViewModel)
         {
-            var pageViewModel = new PagesViewModel()
+            var pageViewModel = new PagesViewModel
             {
                 CurrentPage = currentPage,
                 MaxPage = maxPage,
                 AreaName = "",
                 ActionName = actionName,
                 ControllerName = controllerName,
-                RouteId = id,
+                RouteId = id
             };
 
-            var manufacturers = this.GetAllManufacturers();
+            var manufacturers = GetAllManufacturers();
 
-            return new ManufacturerProductsViewModel()
+            return new ManufacturerProductsViewModel
             {
                 Manufacturers = manufacturers,
                 ManufacturerWithProducts = manufacturerDetailsViewModel,

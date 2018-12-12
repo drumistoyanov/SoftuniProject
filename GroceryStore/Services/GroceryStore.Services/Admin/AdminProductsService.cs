@@ -21,38 +21,38 @@ namespace GroceryStore.Services.Admin
 
         public IEnumerable<ProductIndexViewModel> GetProducts()
         {
-            var products = this.DbContext.Products.ToList();
+            var products = DbContext.Products.ToList();
 
-            return this.Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
+            return Mapper.Map<IEnumerable<ProductIndexViewModel>>(products);
         }
 
         public async Task<ProductDetailsViewModel> GetDetails(int id)
         {
-            var product = await this.DbContext.Products
+            var product = await DbContext.Products
                 .Include(t => t.Manufacturer)
                 .Include(i=>i.Images)
                 .SingleOrDefaultAsync(x => x.Id == id);
-            this.CheckIfProductExist(product);
+            CheckIfProductExist(product);
 
-            var model = this.Mapper.Map<ProductDetailsViewModel>(product);
+            var model = Mapper.Map<ProductDetailsViewModel>(product);
 
             return model;
         }
 
         public async Task<ProductBindingModel> GetProduct(int id)
         {
-            var product = await this.DbContext.Products
+            var product = await DbContext.Products
                 .FindAsync(id);
-            this.CheckIfProductExist(product);
+            CheckIfProductExist(product);
             
-            var bindingModel = this.Mapper.Map<ProductBindingModel>(product);
+            var bindingModel = Mapper.Map<ProductBindingModel>(product);
 
             return bindingModel;
         }
 
         public ProductBindingModel GetBindingModel()
         {
-            var allmanufacturers = this.DbContext.Manufacturers.ToList();
+            var allmanufacturers = DbContext.Manufacturers.ToList();
 
             var productBindingModel = new ProductBindingModel
             {
@@ -64,27 +64,27 @@ namespace GroceryStore.Services.Admin
 
         public async Task SaveProduct(ProductBindingModel model)
         {
-            var manufacturer = await this.DbContext.Manufacturers.FindAsync(model.ManufacturerId);
-            this.CheckIfManufacturerExist(manufacturer);
+            var manufacturer = await DbContext.Manufacturers.FindAsync(model.ManufacturerId);
+            CheckIfManufacturerExist(manufacturer);
 
-            var product = this.Mapper.Map<Product>(model);
-            await this.DbContext.Products.AddAsync(product);
-            await this.DbContext.SaveChangesAsync();
+            var product = Mapper.Map<Product>(model);
+            await DbContext.Products.AddAsync(product);
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task DeleteProduct(int id)
         {
-            var product = await this.DbContext.Products.FindAsync(id);
-            this.CheckIfProductExist(product);
+            var product = await DbContext.Products.FindAsync(id);
+            CheckIfProductExist(product);
 
-            this.DbContext.Remove(product);
-            await this.DbContext.SaveChangesAsync();
+            DbContext.Remove(product);
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task EditProduct(int id, ProductBindingModel model)
         {
-            var product = await this.DbContext.Products.FindAsync(id);
-            this.CheckIfProductExist(product);
+            var product = await DbContext.Products.FindAsync(id);
+            CheckIfProductExist(product);
             
             product.Name = model.Name;
             product.Type = model.Type;
@@ -94,16 +94,16 @@ namespace GroceryStore.Services.Admin
             product.Type = model.Type;
             product.PictureUrl = model.PictureUrl;
                 
-            await this.DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task SetWeightToProductById(int id,decimal weight)
         {
-            var product = await this.DbContext.Products.FindAsync(id);
-            this.CheckIfProductExist(product);
+            var product = await DbContext.Products.FindAsync(id);
+            CheckIfProductExist(product);
 
             product.Weight = weight;
-            this.DbContext.SaveChanges();
+            DbContext.SaveChanges();
         }
 
         private void CheckIfProductExist(Product product)

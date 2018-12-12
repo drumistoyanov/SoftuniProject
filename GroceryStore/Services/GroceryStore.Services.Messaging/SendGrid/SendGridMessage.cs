@@ -1,9 +1,8 @@
-﻿namespace GroceryStore.Services.Messaging.SendGrid
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace GroceryStore.Services.Messaging.SendGrid
 {
-    using System.Collections.Generic;
-
-    using Newtonsoft.Json;
-
     public class SendGridMessage
     {
         public const string TypeText = "text";
@@ -21,17 +20,17 @@
             IEnumerable<SendGridEmail> bcc = null,
             string type = TypeHtml)
         {
-            this.Personalizations = new List<SendGridPersonalization>
+            Personalizations = new List<SendGridPersonalization>
             {
                 new SendGridPersonalization
                 {
                     To = new List<SendGridEmail> { to },
                     Bcc = bcc,
-                    Subject = subject,
-                },
+                    Subject = subject
+                }
             };
-            this.From = from;
-            this.Content = new List<SendGridContent> { new SendGridContent(type, message) };
+            From = from;
+            Content = new List<SendGridContent> { new SendGridContent(type, message) };
         }
 
         [JsonProperty("personalizations")]

@@ -18,151 +18,151 @@ namespace GroceryStore.Services.ManufacturersProducts
 
         public ManufacturerDetailsViewModel GetManufacturerWithProducts(int id, string kind)
         {
-            var manufacturer = this.DbContext.Manufacturers
+            var manufacturer = DbContext.Manufacturers
               .Select(x => new
               {
-                  Id = x.Id,
+                  x.Id,
                   LogoId = x.LogoUrl,
-                  Name = x.Name,
+                  x.Name,
                   Products = x.Products.Select(p => new
                   {
-                      Id = p.Id,
-                      Name = p.Name,
-                      Price = p.Price,
-                      Discount = p.Discount,
-                      PictureUrl = p.PictureUrl,
-                      Kind = p.Kind
+                      p.Id,
+                      p.Name,
+                      p.Price,
+                      p.Discount,
+                      p.PictureUrl,
+                      p.Kind
                   })
                   .Where(p => p.Kind.ToString().ToLower() == kind.ToLower())
               })
               .SingleOrDefault(x => x.Id == id);
 
-            this.CheckIfManufacturerExist(id);
+            CheckIfManufacturerExist(id);
 
-            var model = this.CreateModel(manufacturer);
+            var model = CreateModel(manufacturer);
 
             return model;
         }
         
         public ManufacturerDetailsViewModel GetManufacturerWithProductsOrderByPriceAscending(int id, string kind)
         {
-             var manufacturer = this.DbContext.Manufacturers
+             var manufacturer = DbContext.Manufacturers
                .Select(x => new
                {
-                   Id = x.Id,
+                   x.Id,
                    LogoId = x.LogoUrl,
-                   Name = x.Name,
+                   x.Name,
                    Products = x.Products.Select(p => new
                    {
-                       Id = p.Id,
-                       Name = p.Name,
-                       Price = p.Price,
-                       Discount = p.Discount,
-                       PictureUrl = p.PictureUrl,
-                       Kind = p.Kind
+                       p.Id,
+                       p.Name,
+                       p.Price,
+                       p.Discount,
+                       p.PictureUrl,
+                       p.Kind
                    })
                    .Where(p => p.Kind.ToString().ToLower() == kind.ToLower())
                    .OrderBy(pr => Math.Round(pr.Price - ((pr.Price * pr.Discount) / 100)))
                })
                .SingleOrDefault(x => x.Id == id);
 
-            this.CheckIfManufacturerExist(id);
+            CheckIfManufacturerExist(id);
 
-            var model = this.CreateModel(manufacturer);
+            var model = CreateModel(manufacturer);
 
             return model;
         }
 
         public ManufacturerDetailsViewModel GetManufacturerWithProductsOrderByPriceDescending(int id, string kind)
         {
-            var manufacturer = this.DbContext.Manufacturers
+            var manufacturer = DbContext.Manufacturers
                .Select(x => new
                {
-                   Id = x.Id,
+                   x.Id,
                    LogoId = x.LogoUrl,
-                   Name = x.Name,
+                   x.Name,
                    Products = x.Products.Select(p => new
                    {
-                       Id = p.Id,
-                       Name = p.Name,
-                       Price = p.Price,
-                       Discount = p.Discount,
-                       PictureUrl = p.PictureUrl,
-                       Kind = p.Kind
+                       p.Id,
+                       p.Name,
+                       p.Price,
+                       p.Discount,
+                       p.PictureUrl,
+                       p.Kind
                    })
                    .Where(p => p.Kind.ToString().ToLower() == kind.ToLower())
                    .OrderByDescending(pr => Math.Round(pr.Price - ((pr.Price * pr.Discount) / 100)))
                })
                .SingleOrDefault(x => x.Id == id);
 
-            this.CheckIfManufacturerExist(id);
+            CheckIfManufacturerExist(id);
             
-            var model = this.CreateModel(manufacturer);
+            var model = CreateModel(manufacturer);
 
             return model;
         }
 
         public ManufacturerDetailsViewModel GetManufacturerWithProductsOrderByDiscountAscending(int id, string kind)
         {
-            var manufacturer = this.DbContext.Manufacturers
+            var manufacturer = DbContext.Manufacturers
                .Select(x => new
                {
-                   Id = x.Id,
+                   x.Id,
                    LogoId = x.LogoUrl,
-                   Name = x.Name,
+                   x.Name,
                    Products = x.Products.Select(p => new
                    {
-                       Id = p.Id,
-                       Name = p.Name,
-                       Price = p.Price,
-                       Discount = p.Discount,
-                       PictureUrl = p.PictureUrl,
-                       Kind = p.Kind
+                       p.Id,
+                       p.Name,
+                       p.Price,
+                       p.Discount,
+                       p.PictureUrl,
+                       p.Kind
                    })
                    .Where(p => p.Kind.ToString().ToLower() == kind.ToLower())
                    .OrderBy(d=>d.Discount)
                })
                .SingleOrDefault(x => x.Id == id);
 
-            this.CheckIfManufacturerExist(id);
+            CheckIfManufacturerExist(id);
 
-            var model = this.CreateModel(manufacturer);
+            var model = CreateModel(manufacturer);
 
             return model;
         }
 
         public ManufacturerDetailsViewModel GetManufacturerWithProductsOrderByDiscountDescending(int id, string kind)
         {
-            var manufacturer = this.DbContext.Manufacturers
+            var manufacturer = DbContext.Manufacturers
                .Select(x => new
                {
-                   Id = x.Id,
+                   x.Id,
                    LogoId = x.LogoUrl,
-                   Name = x.Name,
+                   x.Name,
                    Products = x.Products.Select(p => new
                    {
-                       Id = p.Id,
-                       Name = p.Name,
-                       Price = p.Price,
-                       Discount = p.Discount,
-                       PictureUrl = p.PictureUrl,
-                       Kind = p.Kind
+                       p.Id,
+                       p.Name,
+                       p.Price,
+                       p.Discount,
+                       p.PictureUrl,
+                       p.Kind
                    })
                    .Where(p => p.Kind.ToString().ToLower() == kind.ToLower())
                    .OrderByDescending(d => d.Discount)
                })
                .SingleOrDefault(x => x.Id == id);
 
-            this.CheckIfManufacturerExist(id);
+            CheckIfManufacturerExist(id);
 
-            var model = this.CreateModel(manufacturer);
+            var model = CreateModel(manufacturer);
 
             return model;
         }
 
         private void CheckIfManufacturerExist(int id)
         {
-            var manufacturer = this.DbContext.Manufacturers.SingleOrDefault(x => x.Id == id);
+            var manufacturer = DbContext.Manufacturers.SingleOrDefault(x => x.Id == id);
             if (manufacturer == null)
             {
                 throw new ArgumentNullException();

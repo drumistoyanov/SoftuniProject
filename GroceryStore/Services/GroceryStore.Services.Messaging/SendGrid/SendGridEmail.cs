@@ -1,7 +1,7 @@
-﻿namespace GroceryStore.Services.Messaging.SendGrid
-{
-    using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
+namespace GroceryStore.Services.Messaging.SendGrid
+{
     public class SendGridEmail
     {
         public SendGridEmail()
@@ -10,8 +10,8 @@
 
         public SendGridEmail(string email, string name = null)
         {
-            this.Email = email;
-            this.Name = name;
+            Email = email;
+            Name = name;
         }
 
         [JsonProperty("email")]
