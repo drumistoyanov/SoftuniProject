@@ -15,8 +15,8 @@ namespace GroceryStore.Services.Admin
 {
     public class AdminUsersService : BaseEFService,IAdminUsersService
     {
-        private UserManager<User> userManager;
-        private SignInManager<User> signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
         public AdminUsersService(GroceryStoreDbContext dbContext, 
             IMapper mapper,
@@ -24,13 +24,13 @@ namespace GroceryStore.Services.Admin
             SignInManager<User> signInManager) 
             : base(dbContext, mapper)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
         }
         
         public async Task<IEnumerable<UserIndexViewModel>> GetUsers(ClaimsPrincipal sessionUser)
         {
-            var currentUser = await userManager.GetUserAsync(sessionUser);
+            var currentUser = await _userManager.GetUserAsync(sessionUser);
             var users = DbContext.Users
                 .Where(u => u.Id != currentUser.Id)
                 .ToList();
@@ -61,9 +61,9 @@ namespace GroceryStore.Services.Admin
         {
             var user = await DbContext.Users.FindAsync(id);
             CheckIfUserExist(user);
-            user.PasswordHash = userManager.PasswordHasher.HashPassword(user, model.NewPassword);
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.NewPassword);
 
-            return await userManager.UpdateAsync(user);
+            return await _userManager.UpdateAsync(user);
         }
 
         public async Task DeleteUser(string id)
@@ -71,7 +71,7 @@ namespace GroceryStore.Services.Admin
             var user = await DbContext.Users.FindAsync(id);
             CheckIfUserExist(user);
 
-            await userManager.DeleteAsync(user);
+            await _userManager.DeleteAsync(user);
 
             DbContext.SaveChanges();
         }

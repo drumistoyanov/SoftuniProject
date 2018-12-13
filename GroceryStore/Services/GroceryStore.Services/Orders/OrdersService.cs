@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using GroceryStore.Common.ViewModels.Orders;
 using GroceryStore.Data;
+using GroceryStore.Data.Models;
 using GroceryStore.Services.Orders.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,11 +28,29 @@ namespace GroceryStore.Services.Orders
 
         public IEnumerable<OrderProductsViewModel> GetOrderProducts(int orderId)
         {
-            var orderProducts = DbContext.OrderProducts
+            var orderProducts = new List<OrderProduct>();
+
+            var orderProductsViewModels = new List<OrderProductsViewModel>();
+
+            orderProducts = DbContext.OrderProducts
                 .Where(o=>o.OrderId==orderId)
                 .ToList();
 
-            return Mapper.Map<IEnumerable<OrderProductsViewModel>>(orderProducts);
+            foreach (var orderProduct in orderProducts)
+            {
+                var model1 = new OrderProductsViewModel()
+                {
+                    ProductName = orderProduct.ProductName,
+                    ProductPicture = orderProduct.ProductPicture,
+                    ProductPrice = orderProduct.ProductPrice,
+                    ProductWeight = orderProduct.ProductWeight,
+                    Quantity = orderProduct.Quantity,
+                    Weight = orderProduct.Quantity * orderProduct.ProductWeight
+                };
+                orderProductsViewModels.Add(model1);
+            }
+
+            return orderProductsViewModels;
         }
     }
 }
