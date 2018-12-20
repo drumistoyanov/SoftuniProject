@@ -15,7 +15,7 @@ namespace GroceryStore.Web.Controllers
         public IActionResult Index(int id)
         {
             var model = Index(id, ControllersConstants.Foods);
-
+            
             return View(model);
         }
 
