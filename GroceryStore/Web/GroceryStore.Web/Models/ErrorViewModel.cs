@@ -1,4 +1,4 @@
-﻿namespace GroceryStore.Web.Controllers
+﻿namespace GroceryStore.Web.Models
 {
     public class ErrorViewModel
     {

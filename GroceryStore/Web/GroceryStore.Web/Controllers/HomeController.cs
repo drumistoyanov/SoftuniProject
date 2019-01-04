@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using GroceryStore.Common.Constants;
 using GroceryStore.Services.Products.Interfaces;
+using GroceryStore.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryStore.Web.Controllers

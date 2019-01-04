@@ -14,9 +14,9 @@
 
         public const string Type = "Type{0}";
 
-        public const string Test= "Test{0}";
+        public const string Name = "Name{0}";
 
-        public const string Title = "Title{0}";
+        public const string Test= "Test{0}";
 
         public const string Logo = "Logo{0}";
     }
