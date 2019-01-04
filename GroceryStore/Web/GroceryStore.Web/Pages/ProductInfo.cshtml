@@ -49,7 +49,7 @@
             </form>
             <br />
             <form method="post">
-              @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
                 <button type="submit" class="btn btn-danger">Add To Cart</button>
             </form>
             <hr />
@@ -58,7 +58,7 @@
             <p><strong>Manufacturer - </strong>@Model.ProductModel.Manufacturer.Name</p>
             <p><strong>Type - </strong>@Model.ProductModel.Type</p>
             <p><strong>Kind - </strong>@Model.ProductModel.Kind</p>
-            <p><strong>Weight - </strong>@Model.ProductModel.Weight kg.</p>            
+            <p><strong>Weight - </strong>@Model.ProductModel.Weight kg.</p>
         </div>
     </div>
 </div>

@@ -26,7 +26,7 @@ namespace GroceryStore.Data
 
         public DbSet<OrderLog> OrderLogs { get; set; }
 
-        public override int SaveChanges() => SaveChanges(true);
+        public override int SaveChanges() => this.SaveChanges(true);
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

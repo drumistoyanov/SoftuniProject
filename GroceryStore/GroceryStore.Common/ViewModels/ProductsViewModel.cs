@@ -11,7 +11,7 @@ namespace GroceryStore.Common.ViewModels
         public IEnumerable<Manufacturer> Manufacturers { get; set; }
 
         public IEnumerable<ProductIndexViewModel> Products{ get; set; }
-
+        
         public PagesViewModel Page { get; set; }
     }
 }

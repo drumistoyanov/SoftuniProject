@@ -29,16 +29,19 @@ namespace GroceryStore.Web.Pages
             _productCountToBuy.Number = 1;
             ProductModel = await _productsService.GetDetails(id);
         }
-         
+
+#pragma warning disable MVC1001 // Filters cannot be applied to page handler methods.
         [ValidateAntiForgeryToken]
+#pragma warning restore MVC1001 // Filters cannot be applied to page handler methods.
         public async  Task <IActionResult> OnPost(int id)
         {
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = PagesConstants.AddProductToCart;
             Quantity = _productCountToBuy.Number;
+            await Task.Yield();
 
-            return RedirectToAction(PagesConstants.AddToCart, PagesConstants.ShoppingCart, new {id, quantity = Quantity});
+            return  RedirectToAction(PagesConstants.AddToCart, PagesConstants.ShoppingCart, new {id, quantity = Quantity});
         }
 
         public async Task OnGetIncreaseCount(int id)

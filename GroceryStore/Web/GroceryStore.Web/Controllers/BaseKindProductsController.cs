@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GroceryStore.Common.ViewModels;
+﻿using GroceryStore.Common.ViewModels;
 using GroceryStore.Common.ViewModels.Admin.Products;
 using GroceryStore.Data.Models;
 using GroceryStore.Services.Products.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GroceryStore.Web.Controllers
 {
@@ -176,8 +176,9 @@ namespace GroceryStore.Web.Controllers
                 ActionName = actionName,
                 ControllerName = _controllerName
             };
+            
 
-            var manufacturers = GetAllManufacturers();
+        var manufacturers = GetAllManufacturers();
             var types = GetAllTypes();
 
             return new ProductsViewModel

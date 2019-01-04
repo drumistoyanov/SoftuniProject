@@ -45,9 +45,9 @@
                             @if (User.IsInRole("Administrator"))
                             {
 
-                                <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs "></i>Users</a>
-                                <a asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs "></i>Manufacturers</a>
-                                <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs "></i>Products</a>
+                                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa fa-cogs "></i>Users</a></li>
+                                <li>  <a asp-area="Admin" asp-controller="Manufacturers" asp-action="Index"><i class="fa fa-cogs "></i>Manufacturers</a></li>
+                                <li>  <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cogs "></i>Products</a></li>
 
                             }
                         </ul>
@@ -103,8 +103,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a asp-controller="Home" asp-action="Index"> Home</a></li>
-                        <li><a asp-controller="ShoppingCart" asp-action="Items">Cart</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items">Cart</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
 
                         <li><a asp-area="" asp-controller="Foods" asp-action="Index">Foods</a></li>
                         <li><a asp-area="" asp-controller="Drinks" asp-action="Index">Drinks</a></li>
