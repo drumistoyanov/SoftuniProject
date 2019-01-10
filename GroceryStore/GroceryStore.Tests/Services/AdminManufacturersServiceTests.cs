@@ -17,31 +17,31 @@ namespace GroceryStore.Tests.Services
     [TestClass]
     public class AdminManufacturersServiceTests
     {
-        private GroceryStoreDbContext dbContext;
-        private IMapper mapper;
-        private AdminManufacturersService service;
+        private GroceryStoreDbContext _dbContext;
+        private IMapper _mapper;
+        private AdminManufacturersService _service;
 
         [TestInitialize]
         public void InitializeTests()
         {
-            this.dbContext = MockDbContext.GetContext();
-            this.mapper = MockAutoMapper.GetAutoMapper();
-            this.service = new AdminManufacturersService(this.dbContext, this.mapper);
+            this._dbContext = MockDbContext.GetContext();
+            this._mapper = MockAutoMapper.GetAutoMapper();
+            this._service = new AdminManufacturersService(this._dbContext, this._mapper);
 
-            this.dbContext.Manufacturers.Add(new Manufacturer() { Id = 1, Name = string.Format(TestsConstants.Manufacturer, 1),
+            this._dbContext.Manufacturers.Add(new Manufacturer() { Id = 1, Name = string.Format(TestsConstants.Manufacturer, 1),
                 LogoUrl=string.Format(TestsConstants.Logo,1)
             });
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
         }
 
         [TestMethod]
         public void GetManufacturers_WithFewManufacturers_ShouldReturnAll()
         {
-            this.dbContext.Manufacturers.Add(new Manufacturer() { Id = 2, Name = string.Format(TestsConstants.Manufacturer, 2) });
-            this.dbContext.Manufacturers.Add(new Manufacturer() { Id = 3, Name = string.Format(TestsConstants.Manufacturer, 3) });
-            this.dbContext.SaveChanges();
+            this._dbContext.Manufacturers.Add(new Manufacturer() { Id = 2, Name = string.Format(TestsConstants.Manufacturer, 2) });
+            this._dbContext.Manufacturers.Add(new Manufacturer() { Id = 3, Name = string.Format(TestsConstants.Manufacturer, 3) });
+            this._dbContext.SaveChanges();
 
-            var manufacturers = this.service.GetManufacturers().ToList();
+            var manufacturers = this._service.GetManufacturers().ToList();
 
             Assert.IsNotNull(manufacturers);
             Assert.AreEqual(3, manufacturers.Count);
@@ -54,11 +54,11 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public void GetManufacturers_WithFewManufacturers_ShouldReturnTypeofIEnumerableManufacturerIndexViewModel()
         {
-            this.dbContext.Manufacturers.Add(new Manufacturer() { Id = 2, Name = string.Format(TestsConstants.Manufacturer, 2) });
+            this._dbContext.Manufacturers.Add(new Manufacturer() { Id = 2, Name = string.Format(TestsConstants.Manufacturer, 2) });
 
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
 
-            var manufacturers = this.service.GetManufacturers();
+            var manufacturers = this._service.GetManufacturers();
 
             Assert.IsInstanceOfType(manufacturers, typeof(IEnumerable<ManufacturerIndexViewModel>));
         }
@@ -66,11 +66,11 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public void GetManufacturers_WithZeroManufacturers_ShouldReturnZero()
         {
-            var manufacturerToRemove = this.dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
-            this.dbContext.Manufacturers.Remove(manufacturerToRemove);
-            this.dbContext.SaveChanges();
+            var manufacturerToRemove = this._dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
+            this._dbContext.Manufacturers.Remove(manufacturerToRemove);
+            this._dbContext.SaveChanges();
 
-            var manufacturers = this.service.GetManufacturers().ToList();
+            var manufacturers = this._service.GetManufacturers().ToList();
 
             Assert.IsNotNull(manufacturers);
             Assert.AreEqual(0, manufacturers.Count);
@@ -79,13 +79,13 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetDetailsAsync_WithId_ShouldReturnManufacturerDetailsViewModel()
         {
-            this.dbContext.Products.Add(new Product() { Name = string.Format(TestsConstants.Product,1),
+            this._dbContext.Products.Add(new Product() { Name = string.Format(TestsConstants.Product,1),
                 ManufacturerId = 1 });
-            this.dbContext.Products.Add(new Product() { Name = string.Format(TestsConstants.Product, 2),
+            this._dbContext.Products.Add(new Product() { Name = string.Format(TestsConstants.Product, 2),
                 ManufacturerId = 1 });
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
 
-            var manufacturerFromService = await this.service.GetDetails(1);
+            var manufacturerFromService = await this._service.GetDetails(1);
 
             var manufacturerDetailsViewModel = new ManufacturerDetailsViewModel()
             {
@@ -100,7 +100,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetDetailsAsync_WithId_ShouldReturnTypeofManufacturerDetailsViewModel()
         {
-            var manufacturerFromService = await this.service.GetDetails(1);
+            var manufacturerFromService = await this._service.GetDetails(1);
 
             var manufacturerDetailsViewModel = new ManufacturerDetailsViewModel()
             {
@@ -115,7 +115,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetManufacturerAsync_WithId_ShouldReturnThisManufacturer()
         {
-            var manufacturerFromService = await this.service.GetManufacturer(1);
+            var manufacturerFromService = await this._service.GetManufacturer(1);
 
             var bindingModelTest = new ManufacturerBindingModel()
             {
@@ -130,7 +130,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetManufacturerAsync_WithId_ShouldReturnTypeofManufacturerBindingModel()
         {
-            var manufacturerFromService = await this.service.GetManufacturer(1);
+            var manufacturerFromService = await this._service.GetManufacturer(1);
 
             var bindingModelTest = new ManufacturerBindingModel()
             {
@@ -145,15 +145,15 @@ namespace GroceryStore.Tests.Services
         public async Task GetManufacturerAsync_WithNoValidId_ShouldThrowArgumentNullException()
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-             this.service.GetManufacturer(2));
+             this._service.GetManufacturer(2));
         }
 
         [TestMethod]
         public async Task SaveManufacturerAsync_WithProperManufacturer_ShouldAddCorrectly()
         {
-            var manufacturerToRemove = this.dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
-            this.dbContext.Manufacturers.Remove(manufacturerToRemove);
-            this.dbContext.SaveChanges();
+            var manufacturerToRemove = this._dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
+            this._dbContext.Manufacturers.Remove(manufacturerToRemove);
+            this._dbContext.SaveChanges();
 
             var manufacturerModel = new ManufacturerBindingModel
             {
@@ -161,11 +161,11 @@ namespace GroceryStore.Tests.Services
                 LogoUrl = string.Format(TestsConstants.Logo, 1),
             };
 
-            await this.service.SaveManufacturer(manufacturerModel);
+            await this._service.SaveManufacturer(manufacturerModel);
 
-            Assert.AreEqual(1, this.dbContext.Manufacturers.Count());
+            Assert.AreEqual(1, this._dbContext.Manufacturers.Count());
 
-            var manufacturer = this.dbContext.Manufacturers.Last();
+            var manufacturer = this._dbContext.Manufacturers.Last();
 
             Assert.AreEqual(string.Format(TestsConstants.Manufacturer, 1), manufacturer.Name);
             Assert.AreEqual(string.Format(TestsConstants.Logo, 1), manufacturer.LogoUrl);
@@ -174,16 +174,16 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task DeleteManufacturerAsync_WithId_ShouldDeleteCorrectly()
         {
-            await service.DeleteManufacturer(1);
+            await _service.DeleteManufacturer(1);
 
-            Assert.AreEqual(0, this.dbContext.Manufacturers.Count());
+            Assert.AreEqual(0, this._dbContext.Manufacturers.Count());
         }
 
         [TestMethod]
         public async Task DeleteManufacturerAsync_WithNoValidId_ShouldThrowArgumentNullException()
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-            this.service.DeleteManufacturer(2));
+            this._service.DeleteManufacturer(2));
         }
 
         [TestMethod]
@@ -195,9 +195,9 @@ namespace GroceryStore.Tests.Services
                 LogoUrl = string.Format(TestsConstants.EditLogo, 1)
             };
 
-            await service.EditManufacturer(1, bindingModel);
+            await _service.EditManufacturer(1, bindingModel);
 
-            var manufacturer = this.dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
+            var manufacturer = this._dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
 
             Assert.AreEqual(1, manufacturer.Id);
             Assert.AreEqual(string.Format(TestsConstants.EditManufacturer, 1), manufacturer.Name);
@@ -214,7 +214,7 @@ namespace GroceryStore.Tests.Services
             };
 
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-            this.service.EditManufacturer(2, bindingModel));
+            this._service.EditManufacturer(2, bindingModel));
         }
     }
 }

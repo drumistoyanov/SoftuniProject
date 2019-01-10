@@ -22,7 +22,7 @@ namespace GroceryStore.Web.Controllers
         [HttpPost]
         public IActionResult SelectType(string[] types)
         {
-            if (types.Count() == 0)
+            if (types.Any())
             {
                 return RedirectToAction(nameof(Index));
             }

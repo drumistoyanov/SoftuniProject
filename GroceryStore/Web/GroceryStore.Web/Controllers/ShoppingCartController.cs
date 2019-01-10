@@ -135,7 +135,7 @@ namespace GroceryStore.Web.Controllers
                 cartViewModels.Add(model1);
             }
             
-            for (int i = 0; i < cartViewModels.Count(); i++)
+            for (int i = 0; i < cartViewModels.Count; i++)
             {
                 cartViewModels[i].Quantity = cartItems[i].Quantity;
                 cartViewModels[i].Weight = products[i].Weight*cartItems[i].Quantity;

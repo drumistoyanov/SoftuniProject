@@ -10,14 +10,14 @@ namespace GroceryStore.Web.Controllers
 {
     public abstract class BaseKindManufacturerProductsController : BaseController
     {
-        private string controllerName;
+        private readonly string _controllerName;
 
         protected BaseKindManufacturerProductsController(
             IManufacturerProductsServices manufacturerProductsServices,
             IProductsService productsService, 
             string controllerName)
         {
-            this.controllerName = controllerName;
+            this._controllerName = controllerName;
             ManufacturerProductsServices = manufacturerProductsServices;
             ProductsService = productsService;
         }
@@ -28,7 +28,6 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel Index(int id, int page,string kind)
         {
-            var manufacturers = GetAllManufacturers();
             var productsCount = ManufacturerProductsServices.GetManufacturerWithProducts(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
@@ -52,7 +51,6 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel PriceHighLow(int id, int page, string kind)
         {
-            var manufacturers = GetAllManufacturers();
             var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceDescending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
@@ -76,7 +74,6 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel PriceLowHigh(int id, int page, string kind)
         {
-            var manufacturers = GetAllManufacturers();
             var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByPriceAscending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
@@ -100,7 +97,6 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel DiscountHighLow(int id, int page, string kind)
         {
-            var manufacturers = GetAllManufacturers();
             var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountDescending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
@@ -124,7 +120,6 @@ namespace GroceryStore.Web.Controllers
 
         protected ManufacturerProductsViewModel DiscountLowHigh(int id, int page, string kind)
         {
-            var manufacturers = GetAllManufacturers();
             var productsCount = ManufacturerProductsServices.GetManufacturerWithProductsOrderByDiscountAscending(id, kind)
                 .Products.ToList().Count;
             if (page <= 0 || page > productsCount)
@@ -162,7 +157,7 @@ namespace GroceryStore.Web.Controllers
                 MaxPage = maxPage,
                 AreaName = "",
                 ActionName = actionName,
-                ControllerName = controllerName,
+                ControllerName = _controllerName,
                 RouteId = id
             };
 

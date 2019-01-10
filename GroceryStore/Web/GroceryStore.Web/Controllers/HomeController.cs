@@ -14,11 +14,11 @@ namespace GroceryStore.Web.Controllers
             return View();
         }
      
-        private readonly IProductsService productsService;
+        private readonly IProductsService _productsService;
 
         public HomeController(IProductsService productsService)
         {
-            this.productsService = productsService;
+            this._productsService = productsService;
         }
 
         public IActionResult Index()
@@ -29,7 +29,7 @@ namespace GroceryStore.Web.Controllers
         public IActionResult Search(string searchTerm)
         {
             ViewData[ControllersConstants.SearchResult] = searchTerm;
-            var model = productsService.GetProductsBySearchTerm(searchTerm);
+            var model = _productsService.GetProductsBySearchTerm(searchTerm);
 
             return View(model);
         }

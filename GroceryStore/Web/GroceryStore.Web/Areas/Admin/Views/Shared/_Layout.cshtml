@@ -27,12 +27,24 @@
     <div class="header-area">
         <div class="container">
             <div class="row">
+                <div class="col-md-4">
+                    <div class="header-right">
+
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="user-menu">
                         <ul>
 
                             <li><a asp-area="" asp-controller="Home" asp-action="Index"> Home</a></li>
-                            <li><partial name="_LoginPartial" /></li>
+                            <li><partial name="_LoginPartial"/></li>
 
 
                             @if (User.Identity.IsAuthenticated)
@@ -54,18 +66,7 @@
                     </div>
                 </div>
 
-                @*<div class="col-md-4">
-                        <div class="header-right">
-
-                            <div id="google_translate_element"></div>
-                            <script type="text/javascript">
-                                function googleTranslateElementInit() {
-                                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
-                                }
-                            </script>
-                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                        </div>
-                    </div>*@
+              
             </div>
         </div>
     </div> <!-- End header area -->
@@ -81,7 +82,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Items">Cart - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -101,15 +102,12 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a asp-controller="Home" asp-action="Index"> Home</a></li>
-                        <li><a asp-controller="Shop" asp-action="Index">Shop page</a></li>
-                        <li><a asp-controller="Product" asp-action="Index">Single product</a></li>
-                        <li><a asp-controller="ShoppingCart" asp-action="Index">Cart</a></li>
-                        <li><a asp-controller="Checkout" asp-action="Index">Checkout</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index"> Home</a></li>
+                        <li><a asp-area="" asp-controller="ShoppingCart" asp-action="Items">Cart</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
 
-                        <li class="nav-item"><a asp-area="" asp-controller="Mens" asp-action="Index" class="nav-link">Mens</a></li>
-                        <li class="nav-item"><a asp-area="" asp-controller="Ladies" asp-action="Index" class="nav-link">Ladies</a></li>
+                        <li><a asp-area="" asp-controller="Foods" asp-action="Index">Foods</a></li>
+                        <li><a asp-area="" asp-controller="Drinks" asp-action="Index">Drinks</a></li>
                     </ul>
                 </div>
             </div>

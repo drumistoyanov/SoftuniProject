@@ -17,41 +17,41 @@ namespace GroceryStore.Tests.Services
     [TestClass]
     public class AdminProductsServiceTests
     {
-        private GroceryStoreDbContext dbContext;
-        private IMapper mapper;
-        private AdminProductsService service;
+        private GroceryStoreDbContext _dbContext;
+        private IMapper _mapper;
+        private AdminProductsService _service;
 
         [TestInitialize]
         public void InitializeTests()
         {
-            this.dbContext = MockDbContext.GetContext();
-            this.mapper = MockAutoMapper.GetAutoMapper();
-            this.service = new AdminProductsService(this.dbContext, this.mapper);
+            this._dbContext = MockDbContext.GetContext();
+            this._mapper = MockAutoMapper.GetAutoMapper();
+            this._service = new AdminProductsService(this._dbContext, this._mapper);
             
-            this.dbContext.Manufacturers.Add(new Manufacturer() { Id = 1, Name = string.Format(TestsConstants.Manufacturer, 1) });
-            this.dbContext.SaveChanges();
+            this._dbContext.Manufacturers.Add(new Manufacturer() { Id = 1, Name = string.Format(TestsConstants.Manufacturer, 1) });
+            this._dbContext.SaveChanges();
 
-            this.dbContext.Products.Add(new Product()
+            this._dbContext.Products.Add(new Product()
             {
                 Id = 1,
                 Name = string.Format(TestsConstants.Product, 1),
                 Type = string.Format(TestsConstants.Type, 1),
                 ManufacturerId = 1
             });
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
         }
 
         [TestMethod]
         public void GetProducts_WithFewProducts_ShouldReturnAll()
         {
-            this.dbContext.Products.Add(new Product() { Id = 2, Name = string.Format(TestsConstants.Product, 2),
+            this._dbContext.Products.Add(new Product() { Id = 2, Name = string.Format(TestsConstants.Product, 2),
                 ManufacturerId = 1 });
-            this.dbContext.Products.Add(new Product() { Id = 3, Name = string.Format(TestsConstants.Product, 3),
+            this._dbContext.Products.Add(new Product() { Id = 3, Name = string.Format(TestsConstants.Product, 3),
                 ManufacturerId = 1 });
 
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
 
-            var products = this.service.GetProducts().ToList();
+            var products = this._service.GetProducts().ToList();
 
             Assert.IsNotNull(products);
             Assert.AreEqual(3, products.Count);
@@ -64,12 +64,12 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public void GetProducts_WithFewProducts_ShouldReturnTypeofIEnumerableProductIndexViewModel()
         {
-            this.dbContext.Products.Add(new Product() { Id = 2, Name = string.Format(TestsConstants.Product, 2),
+            this._dbContext.Products.Add(new Product() { Id = 2, Name = string.Format(TestsConstants.Product, 2),
                 ManufacturerId = 1 });
 
-            this.dbContext.SaveChanges();
+            this._dbContext.SaveChanges();
 
-            var products= this.service.GetProducts();
+            var products= this._service.GetProducts();
 
             Assert.IsInstanceOfType(products, typeof(IEnumerable<ProductIndexViewModel>));
         }
@@ -77,11 +77,11 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public void GetProducts_WithZeroProducts_ShouldReturnZero()
         {
-            var product = this.dbContext.Products.SingleOrDefault(x => x.Id == 1);
-            this.dbContext.Products.Remove(product);
-            this.dbContext.SaveChanges();
+            var product = this._dbContext.Products.SingleOrDefault(x => x.Id == 1);
+            this._dbContext.Products.Remove(product);
+            this._dbContext.SaveChanges();
 
-            var products = this.service.GetProducts().ToList();
+            var products = this._service.GetProducts().ToList();
 
             Assert.IsNotNull(products);
             Assert.AreEqual(0, products.Count);
@@ -90,18 +90,18 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetDetailsAsync_WithId_ShouldReturnProductDetailsViewModel()
         {
-            this.dbContext.Images.Add(new Image() { Id = 1, ProductId=1 });
-            this.dbContext.Images.Add(new Image() { Id = 2, ProductId = 1 });
-            this.dbContext.SaveChanges();
+            this._dbContext.Images.Add(new Image() { Id = 1, ProductId=1 });
+            this._dbContext.Images.Add(new Image() { Id = 2, ProductId = 1 });
+            this._dbContext.SaveChanges();
 
-            var productFromService = await this.service.GetDetails(1);
+            var productFromService = await this._service.GetDetails(1);
 
-            var manufacturer = this.dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
+            var manufacturer = this._dbContext.Manufacturers.SingleOrDefault(x => x.Id == 1);
             var productDetailsViewModel = new ProductDetailsViewModel()
             {
                 Name = string.Format(TestsConstants.Product, 1),
                 Manufacturer= manufacturer,
-                Images = this.dbContext.Images.Where(x => x.ProductId == 1).ToList()
+                Images = this._dbContext.Images.Where(x => x.ProductId == 1).ToList()
             };
 
             Assert.AreEqual(productDetailsViewModel.Name, productFromService.Name);
@@ -113,7 +113,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetDetailsAsync_WithId_ShouldReturnTypeofProductDetailsViewModel()
         {
-            var productFromService = await this.service.GetDetails(1);
+            var productFromService = await this._service.GetDetails(1);
 
             var productDetailsViewModel = new ProductDetailsViewModel()
             {
@@ -127,7 +127,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetProductAsync_WithId_ShouldReturnThisProduct()
         {
-            var productFromService = await this.service.GetProduct(1);
+            var productFromService = await this._service.GetProduct(1);
 
             var bindingModelTest = new ProductBindingModel()
             {
@@ -142,7 +142,7 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task GetProductAsync_WithId_ShouldReturnTypeofProductBindingModel()
         {
-            var productFromService = await this.service.GetProduct(1);
+            var productFromService = await this._service.GetProduct(1);
 
             var bindingModelTest = new ProductBindingModel()
             {
@@ -157,15 +157,15 @@ namespace GroceryStore.Tests.Services
         public async Task GetProductAsync_WithNoValidId_ShouldThrowArgumentNullException()
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-             this.service.GetProduct(2));
+             this._service.GetProduct(2));
         }
 
         [TestMethod]
         public async Task SaveProductAsync_WithProperProduct_ShouldAddCorrectly()
         {
-            var productToRemove = this.dbContext.Products.SingleOrDefault(x => x.Id == 1);
-            this.dbContext.Products.Remove(productToRemove);
-            this.dbContext.SaveChanges();
+            var productToRemove = this._dbContext.Products.SingleOrDefault(x => x.Id == 1);
+            this._dbContext.Products.Remove(productToRemove);
+            this._dbContext.SaveChanges();
 
             var productModel = new ProductBindingModel
             {
@@ -174,9 +174,9 @@ namespace GroceryStore.Tests.Services
                 ManufacturerId= 1,
             };
 
-            await this.service.SaveProduct(productModel);
+            await this._service.SaveProduct(productModel);
             
-            var product = this.dbContext.Products.First();
+            var product = this._dbContext.Products.First();
 
             Assert.AreEqual(string.Format(TestsConstants.Name, 1), product.Name);
             Assert.AreEqual(string.Format(TestsConstants.Type, 1), product.Type);
@@ -185,16 +185,16 @@ namespace GroceryStore.Tests.Services
         [TestMethod]
         public async Task DeleteProductAsync_WithId_ShouldDeleteCorrectly()
         {
-            await service.DeleteProduct(1);
+            await _service.DeleteProduct(1);
 
-            Assert.AreEqual(0, this.dbContext.Products.Count());
+            Assert.AreEqual(0, this._dbContext.Products.Count());
         }
 
         [TestMethod]
         public async Task DeleteProductAsync_WithNoValidId_ShouldThrowArgumentNullException()
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-            this.service.DeleteProduct(2));
+            this._service.DeleteProduct(2));
         }
 
         [TestMethod]
@@ -206,9 +206,9 @@ namespace GroceryStore.Tests.Services
                 Type= string.Format(TestsConstants.EditType, 1)
             };
 
-            await service.EditProduct(1, bindingModel);
+            await _service.EditProduct(1, bindingModel);
 
-            var product = this.dbContext.Products.SingleOrDefault(x => x.Id == 1);
+            var product = this._dbContext.Products.SingleOrDefault(x => x.Id == 1);
 
             Assert.AreEqual(1, product.Id);
             Assert.AreEqual(string.Format(TestsConstants.EditManufacturer, 1), product.Name);
@@ -225,7 +225,7 @@ namespace GroceryStore.Tests.Services
             };
 
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
-            this.service.EditProduct(2, bindingModel));
+            this._service.EditProduct(2, bindingModel));
         }
     }
 }
