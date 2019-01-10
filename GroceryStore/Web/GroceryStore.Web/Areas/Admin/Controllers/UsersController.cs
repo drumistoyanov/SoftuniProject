@@ -9,22 +9,22 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 {
     public class UsersController : AdminController
     {
-       private readonly IAdminUsersService adminUsersService;
+       private readonly IAdminUsersService _adminUsersService;
 
         public UsersController(IAdminUsersService adminUsersService)
         {
-            this.adminUsersService = adminUsersService;
+            this._adminUsersService = adminUsersService;
         }
         
         public async Task<IActionResult> Index()
         {
-            var model = await adminUsersService.GetUsers(User);
+            var model = await _adminUsersService.GetUsers(User);
             return View(model);
         }
         
         public async Task<IActionResult> Details(string id)
         {
-            var model = await adminUsersService.GetUserDatails(id);
+            var model = await _adminUsersService.GetUserDatails(id);
             return View(model);
         }
         
@@ -38,7 +38,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> ChangePassword(string id,ChangePasswordBindingModel model)
         {
-            var result = await adminUsersService.ChangeUserPassword(id, model);
+            var result = await _adminUsersService.ChangeUserPassword(id, model);
             if (!result.Succeeded)
             {
                 return View();
@@ -57,7 +57,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         
         public async Task<IActionResult> ConfirmBan(string id)
         {
-            await adminUsersService.BanUser(id);
+            await _adminUsersService.BanUser(id);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = AdminConstants.SuccessfullyBan;
@@ -72,7 +72,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         
         public async Task<IActionResult> ConfirmDelete(string id)
         {
-            await adminUsersService.DeleteUser(id);
+            await _adminUsersService.DeleteUser(id);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = AdminConstants.SuccessfullyDeleteUser;

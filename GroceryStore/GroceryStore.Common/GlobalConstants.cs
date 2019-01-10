@@ -2,6 +2,6 @@
 {
     public static class GlobalConstants
     {
-        public const string AdministratorRoleName = "Administrator";
+        public const string HomePage = "http://localhost:51796";
     }
 }

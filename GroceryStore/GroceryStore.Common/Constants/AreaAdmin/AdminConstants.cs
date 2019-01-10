@@ -55,5 +55,7 @@
         public const string SuccessfullyBan = "Successfully ban user's acount.";
 
         public const string SuccessfullyDeleteUser = "Successfully delete user's acount.";
+
+        public const string HomePage = "http://localhost:51796";
     }
 }

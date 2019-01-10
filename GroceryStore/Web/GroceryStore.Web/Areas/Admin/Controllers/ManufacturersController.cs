@@ -10,17 +10,17 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 {
     public class ManufacturersController : AdminController
     {
-        private readonly IAdminManufacturersService adminManufacturersService;
+        private readonly IAdminManufacturersService _adminManufacturersService;
 
         public ManufacturersController(IAdminManufacturersService adminManufacturersService)
         {
-            this.adminManufacturersService = adminManufacturersService;
+            this._adminManufacturersService = adminManufacturersService;
         }
 
         public IActionResult Index(int id)
         { 
             var page = id;
-            var manufacturersCount = adminManufacturersService.GetManufacturers().ToList().Count;
+            var manufacturersCount = _adminManufacturersService.GetManufacturers().ToList().Count;
             if (page <= 0 || page> manufacturersCount)
             {
                 page = 1;
@@ -29,7 +29,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
             ViewData[AdminConstants.CurrentPage] = page;
             var skip = (page - 1) * 4;
 
-            var model = adminManufacturersService.GetManufacturers()
+            var model = _adminManufacturersService.GetManufacturers()
                 .Skip(skip)
                 .Take(4);
             return View(model);
@@ -37,7 +37,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         
         public async Task<IActionResult> Details(int id,int page)
         {
-            var model = await adminManufacturersService.GetDetails(id);
+            var model = await _adminManufacturersService.GetDetails(id);
             var productsCount = model.Products.ToList().Count;
             if (page <= 0 || page > productsCount)
             {
@@ -68,7 +68,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Create(ManufacturerBindingModel model)
         {
-            await adminManufacturersService.SaveManufacturer(model);
+            await _adminManufacturersService.SaveManufacturer(model);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyAdd,
@@ -79,7 +79,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await adminManufacturersService.GetManufacturer(id);
+            var model = await _adminManufacturersService.GetManufacturer(id);
             return View(model);
         }
 
@@ -88,7 +88,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Edit(int id, ManufacturerBindingModel model)
         {
-            await adminManufacturersService.EditManufacturer(id, model);
+            await _adminManufacturersService.EditManufacturer(id, model);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
@@ -106,7 +106,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            await adminManufacturersService.DeleteManufacturer(id);
+            await _adminManufacturersService.DeleteManufacturer(id);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyDelete,

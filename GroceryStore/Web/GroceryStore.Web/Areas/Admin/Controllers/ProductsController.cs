@@ -10,17 +10,17 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 {
     public class ProductsController : AdminController
     {
-        private readonly IAdminProductsService adminProductsService;
+        private readonly IAdminProductsService _adminProductsService;
 
         public ProductsController(IAdminProductsService adminProductsService)
         {
-            this.adminProductsService = adminProductsService;
+            this._adminProductsService = adminProductsService;
         }
 
         public IActionResult Index(int id)
         {
             var page = id;
-            var manufacturersCount = adminProductsService.GetProducts().ToList().Count;
+            var manufacturersCount = _adminProductsService.GetProducts().ToList().Count;
             if (page <= 0 || page > manufacturersCount)
             {
                 page = 1;
@@ -29,7 +29,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
             ViewData[AdminConstants.CurrentPage] = page;
             var skip = (page - 1) * 6;
 
-            var model = adminProductsService.GetProducts()
+            var model = _adminProductsService.GetProducts()
                 .Skip(skip)
                 .Take(6);
 
@@ -38,14 +38,14 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var model = await adminProductsService.GetDetails(id);
+            var model = await _adminProductsService.GetDetails(id);
 
             return View(model);
         }
 
         public IActionResult Create()
         {
-            var model = adminProductsService.GetBindingModel();
+            var model = _adminProductsService.GetBindingModel();
             return View(model);
         }
         
@@ -54,7 +54,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Create(ProductBindingModel model)
         {
-            await adminProductsService.SaveProduct(model);
+            await _adminProductsService.SaveProduct(model);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyAdd,
@@ -65,7 +65,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await adminProductsService.GetProduct(id);
+            var model = await _adminProductsService.GetProduct(id);
             return View(model);
         }
 
@@ -74,7 +74,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Edit(int id, ProductBindingModel model)
         {
-            await adminProductsService.EditProduct(id, model);
+            await _adminProductsService.EditProduct(id, model);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
@@ -92,7 +92,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            await adminProductsService.DeleteProduct(id);
+            await _adminProductsService.DeleteProduct(id);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyDelete,

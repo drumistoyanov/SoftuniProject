@@ -9,11 +9,11 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 {
     public class ImagesController : AdminController
     {
-        private readonly IAdminImagesService adminImagesService;
+        private readonly IAdminImagesService _adminImagesService;
 
         public ImagesController(IAdminImagesService adminImagesService)
         {
-            this.adminImagesService = adminImagesService;
+            this._adminImagesService = adminImagesService;
         }
 
         public IActionResult Create(int id)
@@ -28,7 +28,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Create(int id, ImageBindingModel model)
         {
-            await adminImagesService.SaveImage(model, id);
+            await _adminImagesService.SaveImage(model, id);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyAdd,
@@ -41,7 +41,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int productId, int imageId)
         {
             ViewData[AdminConstants.ProductId] = productId;
-            var model = await adminImagesService.GetImage(imageId);
+            var model = await _adminImagesService.GetImage(imageId);
 
             return View(model);
         }
@@ -51,7 +51,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
         [ValidationModel]
         public async Task<IActionResult> Edit(int productId, int imageId, ImageBindingModel model)
         {
-            await adminImagesService.EditProduct(imageId, model);
+            await _adminImagesService.EditProduct(imageId, model);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyEdit,
@@ -70,7 +70,7 @@ namespace GroceryStore.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ConfirmDelete(int productId, int imageId)
         {
-            await adminImagesService.DeleteProduct(imageId);
+            await _adminImagesService.DeleteProduct(imageId);
 
             TempData[AdminConstants.MessageType] = AdminConstants.Success;
             TempData[AdminConstants.Message] = string.Format(AdminConstants.SuccessfullyDelete,

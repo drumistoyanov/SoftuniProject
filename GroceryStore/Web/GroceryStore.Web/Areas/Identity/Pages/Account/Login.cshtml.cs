@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GroceryStore.Common.Constants.AreaAdmin;
 using GroceryStore.Data.Models;
 using GroceryStore.Web.Areas.Identity.Pages.Account.InputModels;
 using Microsoft.AspNetCore.Authentication;
@@ -54,6 +55,10 @@ namespace GroceryStore.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return Redirect(AdminConstants.HomePage);
+            }
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
